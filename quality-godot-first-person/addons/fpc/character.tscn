@@ -360,6 +360,8 @@ HEADBOB_ANIMATION = NodePath("Head/HeadbobAnimation")
 JUMP_ANIMATION = NodePath("Head/JumpAnimation")
 CROUCH_ANIMATION = NodePath("CrouchAnimation")
 COLLISION_MESH = NodePath("Collision")
+CROUCH = "DISABLED"
+SPRINT = "DISABLED"
 continuous_jumping = false
 view_bobbing = false
 
