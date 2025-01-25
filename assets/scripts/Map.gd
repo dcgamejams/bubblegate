@@ -67,5 +67,5 @@ func _on_atlantis_door_prompt_2_area_shape_entered(area_rid: RID, area: Area2D, 
 	#if correct runes 
 	#get rid of wall
 	#else ask them to try again
-	
+	Hub.send_text($Terminal.text)
 	pass # Replace with function body.

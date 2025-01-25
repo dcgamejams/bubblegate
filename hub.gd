@@ -5,6 +5,11 @@ var environment_container: Node3D
 var players_container: Node3D
 
 
+var terminal_label: Label3D
+
+
+var has_key_one = false
+
 var speed = 0.0
 var depth = 100.0
 
@@ -26,3 +31,9 @@ func interact(interact_event):
 			print("POWER DOWN!!")
 		"PowerUp":
 			print("POWER up fast happens!!")
+			
+
+func send_text_to_terminal(label_text):
+	terminal_label.text = label_text
+	
+	

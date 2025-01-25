@@ -1,6 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://cs3svcsup6svc"]
+[gd_scene load_steps=32 format=3 uid="uid://cs3svcsup6svc"]
 
 [ext_resource type="Texture2D" uid="uid://d1r0xv7shpl86" path="res://assets/textures/Metal056C_1K-JPG/Metal056C_1K-JPG_Color.jpg" id="1_o1xw5"]
+[ext_resource type="Script" uid="uid://d3a87tj5nv2ch" path="res://assets/scripts/sub.gd" id="1_pjlvp"]
 [ext_resource type="PackedScene" uid="uid://by4p5expf36b8" path="res://assets/art/models/terminal.glb" id="2_0qcgy"]
 [ext_resource type="Material" uid="uid://cg5uilit6ep8h" path="res://assets/art/textures/terminal_frame.tres" id="3_27fjf"]
 [ext_resource type="Texture2D" uid="uid://dmpcmcf0q8fsk" path="res://assets/textures/Metal056C_1K-JPG 2/Metal056C_1K-JPG_Roughness.jpg" id="3_ymio1"]
@@ -93,17 +94,20 @@ height = 0.1
 cap_bottom = false
 
 [node name="Sub" type="Node3D"]
+script = ExtResource("1_pjlvp")
 
 [node name="Screen" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.788011, 0.615662, 0, -0.615662, 0.788011, 0, -1.4188, -7.5322)
 
-[node name="Label3D" type="Label3D" parent="Screen"]
-transform = Transform3D(0.464565, 0.0565556, -0.108191, -0.02371, 1.183, -0.0370851, 0.0418766, 0.0423935, 1.17925, -2.79564, 0.0140879, -0.221493)
+[node name="ScreenLabel" type="Label3D" parent="Screen"]
+transform = Transform3D(0.464565, 0.0565556, -0.108191, -0.02371, 1.183, -0.0370851, 0.0418766, 0.0423934, 1.17925, -3.15908, 0.219629, -0.0609074)
 modulate = Color(0.0342545, 0.358601, 0, 1)
 text = "Text this is what we can do
 something here as well."
-font_size = 26
+font_size = 14
 outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 0
 
 [node name="Console" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.39471, -7.94141)
