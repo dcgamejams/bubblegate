@@ -226,7 +226,8 @@ func _physics_process(delta):
 
 func handle_interact():
 	if Input.is_action_pressed('interact') and is_on_floor():
-		Hub.interact(interact_target.name)
+		if interact_target:
+			Hub.interact(interact_target.name)
 
 func handle_jumping():
 	if jumping_enabled:

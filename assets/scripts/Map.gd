@@ -3,6 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hide()
 	pass # Replace with function body.
 
 
@@ -10,12 +11,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_enemy_body_entered(body: Node2D) -> void:
 	$Terminal.text = 'YOU HIT Enemy'
 	pass # Replace with function body.
-
-
 
 # Text to go to terminal once player reaches a point of interest 
 func _on_treasure_body_entered(body: Node2D) -> void:
