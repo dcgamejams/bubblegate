@@ -103,6 +103,8 @@ var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") 
 var mouseInput : Vector2 = Vector2(0,0)
 
 var id = null
+var locked_mouse: Vector2 
+
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
@@ -174,6 +176,7 @@ func change_reticle(reticle): # Yup, this function is kinda strange
 
 
 func _physics_process(delta):
+
 	# Big thanks to github.com/LorenzoAncora for the concept of the improved debug values
 	current_speed = Vector3.ZERO.distance_to(get_real_velocity())
 	$UserInterface/DebugPanel.add_property("Speed", snappedf(current_speed, 0.001), 1)
@@ -191,6 +194,16 @@ func _physics_process(delta):
 	#gravity = ProjectSettings.get_setting("physics/3d/default_gravity") # If the gravity changes during your game, uncomment this code
 	if not is_on_floor() and gravity and gravity_enabled:
 		velocity.y -= gravity * delta
+	
+
+	# Map toggle!!
+	# Map toggle!!
+	# Map toggle!!
+	# Map toggle!!
+	# Map toggle!!
+	if Hub.Map.is_map_visible == true:
+		handle_unlock()
+		return
 	
 	handle_jumping()
 	
@@ -223,10 +236,19 @@ func _physics_process(delta):
 	was_on_floor = is_on_floor() # This must always be at the end of physics_process
 
 
-
 func handle_interact():
 	if Input.is_action_pressed('interact') and is_on_floor():
-		Hub.interact(interact_target.name)
+		if interact_target:
+			if interact_target.name == 'Map' and Hub.interact_timer.is_stopped() and Hub.Map.is_map_visible == false:
+				locked_mouse = mouseInput
+				Hub.Map.map_show()
+			else:
+				Hub.interact(interact_target.name)
+
+func handle_unlock():
+	if Input.is_action_pressed('interact') and Hub.interact_timer.is_stopped() and Hub.Map.is_map_visible == true:
+		mouseInput == locked_mouse
+		Hub.Map.map_hide()
 
 func handle_jumping():
 	if jumping_enabled:

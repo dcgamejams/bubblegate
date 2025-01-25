@@ -110,6 +110,7 @@ position = Vector2(834, -10.5)
 shape = SubResource("RectangleShape2D_c6ma7")
 
 [node name="Terminal" type="Label" parent="."]
+visible = false
 offset_left = 211.0
 offset_top = 753.0
 offset_right = 614.0
@@ -672,7 +673,7 @@ texture = ExtResource("8_qlsg3")
 [connection signal="input_event" from="oceanLayout/AtlantisDoor" to="." method="_on_atlantis_door_input_event"]
 [connection signal="input_event" from="oceanLayout/AtlantisDoor2" to="." method="_on_atlantis_door_2_input_event"]
 [connection signal="body_entered" from="oceanLayout/AtlantisDoorPrompt" to="." method="_on_atlantis_door_prompt_body_entered"]
-[connection signal="area_shape_entered" from="oceanLayout/AtlantisDoorPrompt2" to="." method="_on_atlantis_door_prompt_2_area_shape_entered"]
+[connection signal="body_entered" from="oceanLayout/AtlantisDoorPrompt2" to="." method="_on_atlantis_door_prompt_2_body_entered"]
 [connection signal="body_entered" from="oceanLayout/Rune1" to="." method="_on_rune_1_body_entered"]
 [connection signal="body_entered" from="oceanLayout/Rune2" to="." method="_on_rune_2_body_entered"]
 [connection signal="body_entered" from="oceanLayout/Rune3" to="." method="_on_rune_3_body_entered"]
