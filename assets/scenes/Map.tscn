@@ -1,5 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bmhk3w0iy3dbu"]
-
+[gd_scene load_steps=29 format=3 uid="uid://bmhk3w0iy3dbu"]
 
 [ext_resource type="Script" uid="uid://2v286l2io7xd" path="res://assets/scripts/MapChracter.gd" id="1_c6ma7"]
 [ext_resource type="Script" uid="uid://0hd4flk2lwjj" path="res://assets/scripts/Map.gd" id="1_k2r0d"]
@@ -61,7 +60,6 @@ b = Vector2(23.4, 53.6)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1nh2a"]
 b = Vector2(10.4, 9.00001)
 
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_0r2rp"]
 a = Vector2(-7.4, -2.00001)
 b = Vector2(3.39999, 7.99999)
@@ -81,6 +79,8 @@ _data = {
 point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ruuhv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5vml"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_k2r0d")
@@ -284,7 +284,6 @@ position = Vector2(1526, 748)
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_0r2rp")
 
-
 [node name="Rune3" type="Area2D" parent="oceanLayout"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Rune3"]
@@ -324,12 +323,17 @@ scale = Vector2(1, 1.00989)
 scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_ruuhv")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Hazards"]
-position = Vector2(308.682, 245.071)
+[node name="Chase" type="CharacterBody2D" parent="Hazards"]
+position = Vector2(75.6769, 181.053)
+scale = Vector2(1, 1)
 script = ExtResource("5_ruuhv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Hazards/Chase"]
+scale = Vector2(0.995748, 1.00029)
 texture = ExtResource("3_4x54j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Chase"]
+shape = SubResource("RectangleShape2D_i5vml")
 
 [connection signal="body_entered" from="oceanLayout/PictureOfAtlantis" to="." method="_on_treasure_body_entered"]
 [connection signal="input_event" from="oceanLayout/AtlantisDoor" to="." method="_on_atlantis_door_input_event"]
