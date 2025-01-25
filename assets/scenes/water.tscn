@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx82irm7ibwgh"]
+
+[ext_resource type="BoxMesh" uid="uid://dupvfkpon2e3r" path="res://water.tres" id="1_ppoxq"]
+
+[node name="Water" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00370598, 0, 0)
+transparency = 0.16
+mesh = ExtResource("1_ppoxq")
