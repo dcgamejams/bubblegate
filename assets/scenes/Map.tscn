@@ -106,6 +106,7 @@ position = Vector2(834, -10.5)
 shape = SubResource("RectangleShape2D_c6ma7")
 
 [node name="Terminal" type="Label" parent="."]
+visible = false
 offset_left = 211.0
 offset_top = 753.0
 offset_right = 614.0

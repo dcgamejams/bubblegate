@@ -1,15 +1,24 @@
 extends Node2D
 
+var interact_timer := Timer.new()
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+var is_map_visible = false
+
+func _ready():
 	hide()
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func map_hide():
+	if Hub.interact_timer.is_stopped():
+		Hub.interact_timer.start()
+		is_map_visible = false
+		hide()
+	
+func map_show():
+	if Hub.interact_timer.is_stopped():
+		Hub.interact_timer.start()
+		is_map_visible = true
+		show()
+		
 
 func _on_enemy_body_entered(body: Node2D) -> void:
 	$Terminal.text = 'YOU HIT Enemy'

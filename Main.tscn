@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://dw2n54o6wfs4t"]
+[gd_scene load_steps=9 format=3 uid="uid://dw2n54o6wfs4t"]
 
+[ext_resource type="Script" uid="uid://chjkqkhsowe7i" path="res://assets/scripts/Main.gd" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://c3ene67v4ctkd" path="res://assets/scenes/Engine.tscn" id="2_fos0i"]
 [ext_resource type="PackedScene" uid="uid://cs3svcsup6svc" path="res://assets/scenes/Sub.tscn" id="2_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://bmhk3w0iy3dbu" path="res://assets/scenes/Map.tscn" id="3_3dxm6"]
 [ext_resource type="Script" uid="uid://irdiy4uk3qmf" path="res://network/scripts/join.gd" id="3_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://badtpsxn5lago" path="res://network/ui/network-popup.tscn" id="3_r0du0"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://character/character.tscn" id="4_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://bqotgssorourc" path="res://assets/scenes/HullMonitor.tscn" id="5_trn2v"]
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_lgr22")
 
 [node name="PlayersContainer" type="Node3D" parent="."]
 
@@ -16,9 +19,12 @@
 [node name="Sub" parent="EnvironmentContainer" instance=ExtResource("2_uu6xs")]
 
 [node name="Engine" parent="EnvironmentContainer" instance=ExtResource("2_fos0i")]
-transform = Transform3D(-1.09978, 0, 0.0221536, 0, 1.1, 0, -0.0221536, 0, -1.09978, 1.12271, -2.3141, 7.25891)
+transform = Transform3D(-4.80827e-08, 0, -1.1, 0, 1.1, 0, 1.1, 0, -4.80827e-08, 2.79793, -2.3141, -5.44706)
 
 [node name="Map" parent="EnvironmentContainer" instance=ExtResource("3_3dxm6")]
+
+[node name="HullMonitor" parent="EnvironmentContainer" instance=ExtResource("5_trn2v")]
+transform = Transform3D(0.6, 0, 0, 0, 0.395332, 0.451346, 0, -0.451346, 0.395332, -1.1376, -1.72787, -7.14987)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://cc1m2a1obsyn4")
