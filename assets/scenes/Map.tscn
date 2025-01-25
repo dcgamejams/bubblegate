@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bmhk3w0iy3dbu"]
+[gd_scene load_steps=33 format=3 uid="uid://ck6d7iov3vhse"]
 
 [ext_resource type="Script" uid="uid://2v286l2io7xd" path="res://assets/scripts/MapChracter.gd" id="1_c6ma7"]
 [ext_resource type="Script" uid="uid://0hd4flk2lwjj" path="res://assets/scripts/Map.gd" id="1_k2r0d"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d1igkw5dp8rud" path="res://assets/art/textures/water 3.png" id="6_i5vml"]
 [ext_resource type="Texture2D" uid="uid://e8l6sqpluebo" path="res://assets/art/textures/rock wall tileset.png" id="6_trfwn"]
 [ext_resource type="Texture2D" uid="uid://bh67806bpy84q" path="res://assets/art/textures/rocks2.png" id="8_qlsg3"]
+[ext_resource type="Texture2D" uid="uid://bda3i472l7th7" path="res://BlueBackground.png" id="9_qlsg3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6ma7"]
 albedo_color = Color(1, 0, 1, 1)
@@ -677,6 +678,12 @@ position = Vector2(1717, 859)
 rotation = -1.67552
 scale = Vector2(3.125, 3)
 texture = ExtResource("8_qlsg3")
+
+[node name="BlueBackground" type="Sprite2D" parent="MapBackground"]
+z_index = -20
+position = Vector2(835.25, 456.25)
+scale = Vector2(2.95838, 2.62656)
+texture = ExtResource("9_qlsg3")
 
 [connection signal="body_entered" from="oceanLayout/PictureOfAtlantis" to="." method="_on_treasure_body_entered"]
 [connection signal="input_event" from="oceanLayout/AtlantisDoor" to="." method="_on_atlantis_door_input_event"]
