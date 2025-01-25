@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cs3svcsup6svc"]
+[gd_scene load_steps=31 format=3 uid="uid://cs3svcsup6svc"]
 
 [ext_resource type="Texture2D" uid="uid://d1r0xv7shpl86" path="res://assets/textures/Metal056C_1K-JPG/Metal056C_1K-JPG_Color.jpg" id="1_o1xw5"]
 [ext_resource type="PackedScene" uid="uid://by4p5expf36b8" path="res://assets/art/models/terminal.glb" id="2_0qcgy"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://ddkk4a4jqpdq5" path="res://assets/art/models/sonar.glb" id="6_gwsqi"]
 [ext_resource type="Material" uid="uid://721f124lr1jc" path="res://assets/art/models/sonar.tres" id="7_0kgnv"]
 [ext_resource type="Material" uid="uid://c642aeha85nqj" path="res://assets/art/textures/terminal_etc.tres" id="8_7gjum"]
-[ext_resource type="Script" uid="uid://d1r34f5qi0ibe" path="res://assets/scenes/sonar.gd" id="8_pjlvp"]
 [ext_resource type="PackedScene" uid="uid://b3l4p7vi51c6w" path="res://assets/art/models/Pipes.fbx" id="9_g1iop"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ymio1"]
@@ -134,7 +133,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 28.922
 surface_material_override/1 = ExtResource("7_0kgnv")
 surface_material_override/2 = ExtResource("5_0b8rl")
 surface_material_override/3 = ExtResource("8_7gjum")
-script = ExtResource("8_pjlvp")
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.182544, 6.6659)
