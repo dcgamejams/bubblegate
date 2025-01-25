@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://brwtpkk7bv56o"]
+
+[ext_resource type="Script" uid="uid://ct6qgv0ens5fb" path="res://assets/scenes/test.gd" id="1_u05g1"]
+[ext_resource type="PackedScene" uid="uid://cihliwbnaea43" path="res://assets/scenes/TerminalUI.tscn" id="2_np4up"]
+
+[node name="Test" type="Node"]
+script = ExtResource("1_u05g1")
+
+[node name="TerminalUI" parent="." instance=ExtResource("2_np4up")]

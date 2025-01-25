@@ -1,5 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://bmhk3w0iy3dbu"]
 
+
 [ext_resource type="Script" uid="uid://2v286l2io7xd" path="res://assets/scripts/MapChracter.gd" id="1_c6ma7"]
 [ext_resource type="Script" uid="uid://0hd4flk2lwjj" path="res://assets/scripts/Map.gd" id="1_k2r0d"]
 [ext_resource type="Script" uid="uid://dwtwstknmtcb4" path="res://assets/scenes/guard_follow.gd" id="3_3kb6w"]
@@ -38,7 +39,7 @@ a = Vector2(78.4, -0.6)
 b = Vector2(48.4, 37.4)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3kb6w"]
-a = Vector2(-2, 57.4)
+a = Vector2(-1.40001, 32.6)
 b = Vector2(-0.399994, 7.99999)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ruuhv"]
@@ -60,8 +61,18 @@ b = Vector2(23.4, 53.6)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1nh2a"]
 b = Vector2(10.4, 9.00001)
 
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0r2rp"]
+a = Vector2(-7.4, -2.00001)
+b = Vector2(3.39999, 7.99999)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_dyyi6"]
+b = Vector2(12.4, 10.6)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0r2rp"]
-radius = 8.62091
+radius = 12.6507
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4x54j"]
 
 [sub_resource type="Curve2D" id="Curve2D_3kb6w"]
 _data = {
@@ -97,10 +108,10 @@ position = Vector2(834, -10.5)
 shape = SubResource("RectangleShape2D_c6ma7")
 
 [node name="Terminal" type="Label" parent="."]
-offset_left = 1323.0
-offset_top = 963.0
-offset_right = 1726.0
-offset_bottom = 1073.0
+offset_left = 211.0
+offset_top = 753.0
+offset_right = 614.0
+offset_bottom = 863.0
 theme_override_font_sizes/font_size = 80
 text = "Test text"
 
@@ -199,14 +210,6 @@ position = Vector2(582, 493)
 scale = Vector2(5, 5)
 shape = SubResource("SegmentShape2D_1nh2a")
 
-[node name="AtlantisDoor2" type="StaticBody2D" parent="oceanLayout"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/AtlantisDoor2"]
-position = Vector2(779, 375)
-scale = Vector2(5, 5)
-shape = SubResource("SegmentShape2D_1nh2a")
-debug_color = Color(0.90724, 0.000121289, 0.740698, 0.42)
-
 [node name="StaticBody2D13" type="StaticBody2D" parent="oceanLayout"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D13"]
@@ -243,33 +246,58 @@ scale = Vector2(5, 5)
 shape = SubResource("SegmentShape2D_1nh2a")
 debug_color = Color(0.90724, 0.000121289, 0.740698, 0.42)
 
-[node name="Area2D" type="Area2D" parent="oceanLayout"]
+[node name="AtlantisDoor2" type="StaticBody2D" parent="oceanLayout"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Area2D"]
-position = Vector2(-18, 632)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/AtlantisDoor2"]
+position = Vector2(779, 375)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_1nh2a")
+debug_color = Color(0.90724, 0.000121289, 0.740698, 0.42)
+
+[node name="AtlantisDoorPrompt" type="Area2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/AtlantisDoorPrompt"]
+position = Vector2(664, 556)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_0r2rp")
+debug_color = Color(0.46437, 0.444366, 1, 0.42)
+
+[node name="AtlantisDoorPrompt2" type="Area2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/AtlantisDoorPrompt2"]
+position = Vector2(781, 360)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_dyyi6")
+debug_color = Color(0.635333, 0.341721, 1, 0.42)
+
+[node name="Rune1" type="Area2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Rune1"]
+position = Vector2(-1, 644)
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_0r2rp")
 
-[node name="Area2D2" type="Area2D" parent="oceanLayout"]
+[node name="Rune2" type="Area2D" parent="oceanLayout"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Area2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Rune2"]
 position = Vector2(1526, 748)
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_0r2rp")
 
-[node name="Area2D3" type="Area2D" parent="oceanLayout"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Area2D3"]
-position = Vector2(719, 84)
+[node name="Rune3" type="Area2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Rune3"]
+position = Vector2(719, 59)
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_0r2rp")
 
-[node name="Area2D4" type="Area2D" parent="oceanLayout"]
+[node name="Rune4" type="Area2D" parent="oceanLayout"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Area2D4"]
-position = Vector2(1670, 78.0001)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Rune4"]
+position = Vector2(1656, 73)
 scale = Vector2(5, 5)
-shape = SubResource("CircleShape2D_0r2rp")
+shape = SubResource("CircleShape2D_4x54j")
 
 [node name="Hazards" type="Node2D" parent="."]
 position = Vector2(155, -119)
@@ -304,3 +332,11 @@ script = ExtResource("5_ruuhv")
 texture = ExtResource("3_4x54j")
 
 [connection signal="body_entered" from="oceanLayout/PictureOfAtlantis" to="." method="_on_treasure_body_entered"]
+[connection signal="input_event" from="oceanLayout/AtlantisDoor" to="." method="_on_atlantis_door_input_event"]
+[connection signal="input_event" from="oceanLayout/AtlantisDoor2" to="." method="_on_atlantis_door_2_input_event"]
+[connection signal="body_entered" from="oceanLayout/AtlantisDoorPrompt" to="." method="_on_atlantis_door_prompt_body_entered"]
+[connection signal="area_shape_entered" from="oceanLayout/AtlantisDoorPrompt2" to="." method="_on_atlantis_door_prompt_2_area_shape_entered"]
+[connection signal="body_entered" from="oceanLayout/Rune1" to="." method="_on_rune_1_body_entered"]
+[connection signal="body_entered" from="oceanLayout/Rune2" to="." method="_on_rune_2_body_entered"]
+[connection signal="body_entered" from="oceanLayout/Rune3" to="." method="_on_rune_3_body_entered"]
+[connection signal="body_entered" from="oceanLayout/Rune4" to="." method="_on_rune_4_body_entered"]
