@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmhk3w0iy3dbu"]
+[gd_scene load_steps=20 format=3 uid="uid://bmhk3w0iy3dbu"]
 
 [ext_resource type="Script" uid="uid://2v286l2io7xd" path="res://assets/scripts/MapChracter.gd" id="1_c6ma7"]
 [ext_resource type="Script" uid="uid://0hd4flk2lwjj" path="res://assets/scripts/Map.gd" id="1_k2r0d"]
@@ -14,16 +14,57 @@ height = 20.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_k2r0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6ma7"]
-size = Vector2(2000, 32)
+size = Vector2(2000, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2r0d"]
+size = Vector2(68, 923)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c6ma7"]
-radius = 42.0
+radius = 56.5155
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i5vml"]
+a = Vector2(-13.6, 15.8)
+b = Vector2(-44, 50.2)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_k2r0d"]
+a = Vector2(-31.8, 27.4)
+b = Vector2(30.4, 57.6)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4x54j"]
+a = Vector2(78.4, -0.6)
+b = Vector2(48.4, 37.4)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3kb6w"]
+a = Vector2(-2, 57.4)
+b = Vector2(-0.399994, 7.99999)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ruuhv"]
+b = Vector2(83.4, 31.4)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_srbkf"]
+a = Vector2(-1.2, 13.2)
+b = Vector2(33.2, 49.2)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_trfwn"]
+a = Vector2(14, -13.8)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qlsg3"]
+a = Vector2(58.2, -10.2)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2pa8y"]
+b = Vector2(23.4, 53.6)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1nh2a"]
+b = Vector2(10.4, 9.00001)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0r2rp"]
+radius = 8.62091
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_k2r0d")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(500, 500)
+position = Vector2(67, 92)
 script = ExtResource("1_c6ma7")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
@@ -38,18 +79,188 @@ shape = SubResource("CircleShape2D_k2r0d")
 position = Vector2(827, 920)
 shape = SubResource("RectangleShape2D_c6ma7")
 
-[node name="Treasure" type="Area2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="StaticBody2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Treasure"]
-position = Vector2(949, 835)
-shape = SubResource("CircleShape2D_c6ma7")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/StaticBody2D"]
+position = Vector2(834, -10.5)
+shape = SubResource("RectangleShape2D_c6ma7")
 
 [node name="Terminal" type="Label" parent="."]
-offset_left = 239.0
-offset_top = 150.0
-offset_right = 673.0
-offset_bottom = 173.0
+offset_left = 1323.0
+offset_top = 963.0
+offset_right = 1726.0
+offset_bottom = 1073.0
 theme_override_font_sizes/font_size = 80
 text = "Test text"
 
-[connection signal="body_entered" from="Treasure" to="." method="_on_treasure_body_entered"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-193, 907)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(57, -462.5)
+shape = SubResource("RectangleShape2D_k2r0d")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(-193, 907)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(1988, -465)
+shape = SubResource("RectangleShape2D_k2r0d")
+
+[node name="Enemy" type="Area2D" parent="."]
+
+[node name="oceanLayout" type="Node2D" parent="."]
+
+[node name="PictureOfAtlantis" type="Area2D" parent="oceanLayout"]
+position = Vector2(1, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/PictureOfAtlantis"]
+position = Vector2(214, 251)
+shape = SubResource("CircleShape2D_c6ma7")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D6"]
+position = Vector2(793, 244)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_i5vml")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D"]
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_k2r0d")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="oceanLayout"]
+position = Vector2(-131, -80)
+scale = Vector2(1.5, 1.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D2"]
+position = Vector2(25, 7)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_4x54j")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="oceanLayout"]
+position = Vector2(-8, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D3"]
+position = Vector2(930, -55)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_3kb6w")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D4"]
+position = Vector2(-150, 469)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_ruuhv")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D5"]
+position = Vector2(382, 675)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_srbkf")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D8"]
+position = Vector2(1172, 734)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_trfwn")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D9"]
+position = Vector2(1324, 535)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_qlsg3")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D10"]
+position = Vector2(1346, -6)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_2pa8y")
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D11"]
+position = Vector2(582, 493)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_1nh2a")
+
+[node name="AtlantisDoor2" type="StaticBody2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/AtlantisDoor2"]
+position = Vector2(779, 375)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_1nh2a")
+debug_color = Color(0.90724, 0.000121289, 0.740698, 0.42)
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D13"]
+position = Vector2(828, 415)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_1nh2a")
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D14"]
+position = Vector2(724, 326)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_1nh2a")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D7"]
+position = Vector2(954, 383)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_i5vml")
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/StaticBody2D15"]
+position = Vector2(690, 586)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_1nh2a")
+
+[node name="AtlantisDoor" type="StaticBody2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/AtlantisDoor"]
+position = Vector2(637, 538)
+scale = Vector2(5, 5)
+shape = SubResource("SegmentShape2D_1nh2a")
+debug_color = Color(0.90724, 0.000121289, 0.740698, 0.42)
+
+[node name="Area2D" type="Area2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Area2D"]
+position = Vector2(-18, 632)
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_0r2rp")
+
+[node name="Area2D2" type="Area2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Area2D2"]
+position = Vector2(1526, 748)
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_0r2rp")
+
+[node name="Area2D3" type="Area2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Area2D3"]
+position = Vector2(719, 84)
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_0r2rp")
+
+[node name="Area2D4" type="Area2D" parent="oceanLayout"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Area2D4"]
+position = Vector2(1670, 78.0001)
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_0r2rp")
+
+[connection signal="area_entered" from="Enemy" to="CharacterBody2D" method="_on_enemy_area_entered"]
+[connection signal="body_entered" from="oceanLayout/PictureOfAtlantis" to="." method="_on_treasure_body_entered"]
