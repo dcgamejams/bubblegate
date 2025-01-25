@@ -138,12 +138,12 @@ func check_controls(): # If you add a control, you might want to add a check for
 	if !InputMap.has_action(PAUSE):
 		push_error("No control mapped for pause. Please add an input map control. Disabling pausing.")
 		pausing_enabled = false
-	if !InputMap.has_action(CROUCH):
-		push_error("No control mapped for crouch. Please add an input map control. Disabling crouching.")
-		crouch_enabled = false
-	if !InputMap.has_action(SPRINT):
-		push_error("No control mapped for sprint. Please add an input map control. Disabling sprinting.")
-		sprint_enabled = false
+	#if !InputMap.has_action(CROUCH):
+		#push_error("No control mapped for crouch. Please add an input map control. Disabling crouching.")
+		#crouch_enabled = false
+	#if !InputMap.has_action(SPRINT):
+		#push_error("No control mapped for sprint. Please add an input map control. Disabling sprinting.")
+		#sprint_enabled = false
 
 
 func change_reticle(reticle): # Yup, this function is kinda strange

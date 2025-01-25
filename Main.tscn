@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw2n54o6wfs4t"]
+[gd_scene load_steps=3 format=3 uid="uid://dw2n54o6wfs4t"]
 
-[ext_resource type="PackedScene" uid="uid://cs3svcsup6svc" path="res://sub_temp/sub_temp.tscn" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://quality-godot-first-person/addons/fpc/character.tscn" id="1_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://cs3svcsup6svc" path="res://assets/scenes/Sub.tscn" id="2_uu6xs"]
 
 [node name="Main" type="Node3D"]
 
-[node name="SubTemp" parent="." instance=ExtResource("1_glv2v")]
+[node name="Players" type="Node3D" parent="."]
+
+[node name="Character" parent="Players" instance=ExtResource("1_uu6xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.47638, 0)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="SubTemp" parent="Environment" instance=ExtResource("2_uu6xs")]
