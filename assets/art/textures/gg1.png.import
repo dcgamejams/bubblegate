@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpj1hqj67xxar"
-path.s3tc="res://.godot/imported/Metal056C.png-38ceade424c7291b83b8b47731967db1.s3tc.ctex"
+uid="uid://cb03jyo1kdyh7"
+path.s3tc="res://.godot/imported/gg1.png-6b8817f65ea137aeeae4068440e89491.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Metal056C_1K-JPG 2/Metal056C.png"
-dest_files=["res://.godot/imported/Metal056C.png-38ceade424c7291b83b8b47731967db1.s3tc.ctex"]
+source_file="res://assets/art/textures/gg1.png"
+dest_files=["res://.godot/imported/gg1.png-6b8817f65ea137aeeae4068440e89491.s3tc.ctex"]
 
 [params]
 

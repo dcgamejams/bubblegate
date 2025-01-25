@@ -1,0 +1,118 @@
+[gd_scene load_steps=19 format=3 uid="uid://cs3svcsup6svc"]
+
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://quality-godot-first-person/addons/fpc/character.tscn" id="1_vkwla"]
+[ext_resource type="Material" uid="uid://721f124lr1jc" path="res://assets/art/models/sonar.tres" id="3_52nqy"]
+[ext_resource type="PackedScene" uid="uid://by4p5expf36b8" path="res://assets/art/models/terminal.glb" id="4_a1l7c"]
+[ext_resource type="Material" uid="uid://cg5uilit6ep8h" path="res://assets/art/textures/terminal_frame.tres" id="5_h2bq5"]
+[ext_resource type="Material" uid="uid://c4lfdx0y326if" path="res://assets/art/textures/terminal_screen.tres" id="6_n6o3j"]
+[ext_resource type="Material" uid="uid://bes3sivkdfn5a" path="res://assets/art/textures/terminal.tres" id="7_n0fol"]
+[ext_resource type="Material" uid="uid://c642aeha85nqj" path="res://assets/art/textures/terminal_etc.tres" id="8_n6o3j"]
+[ext_resource type="PackedScene" uid="uid://ddkk4a4jqpdq5" path="res://assets/art/models/sonar.glb" id="8_u0uaj"]
+[ext_resource type="PackedScene" uid="uid://cyg838kn6v05f" path="res://assets/art/models/periscope.glb" id="10_px3vg"]
+[ext_resource type="PackedScene" uid="uid://koqbthija23l" path="res://assets/art/models/sub.glb" id="10_u0uaj"]
+[ext_resource type="Texture2D" uid="uid://bpj1hqj67xxar" path="res://assets/textures/Metal056C_1K-JPG 2/Metal056C.png" id="11_4x7n6"]
+[ext_resource type="Texture2D" uid="uid://ddpkj63spil01" path="res://assets/textures/Metal056C_1K-JPG/Metal056C.png" id="12_px3vg"]
+
+[sub_resource type="Environment" id="Environment_vkwla"]
+tonemap_mode = 3
+tonemap_exposure = 0.1
+tonemap_white = 1.34
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0676
+volumetric_fog_gi_inject = 1.06
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4x7n6"]
+backface_collision = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52nqy"]
+albedo_texture = ExtResource("11_4x7n6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4e5m7"]
+albedo_texture = ExtResource("12_px3vg")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_px3vg"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_px3vg"]
+
+[node name="SubTemp" type="Node3D"]
+
+[node name="Character" parent="." instance=ExtResource("1_vkwla")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33473, -2.20186, -4.79549)
+motion_mode = 1
+jump_velocity = 0.0
+gravity_enabled = false
+
+[node name="env" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vkwla")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="env"]
+transform = Transform3D(0.743933, -0.00818729, 0.0293777, -0.0289859, -0.412803, 0.618967, 0.00948151, -0.619591, -0.412776, -1.04854, 0.962385, -7.45345)
+light_energy = 3.28
+light_size = 0.333
+light_specular = 0.0
+shadow_enabled = true
+shadow_bias = 0.01
+spot_range = 5.775
+spot_attenuation = -2.01
+spot_angle = 66.82
+
+[node name="OmniLight3D" type="OmniLight3D" parent="env/SpotLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.31323e-10, 1.19209e-07, -0.828885)
+light_energy = 0.515
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 7.626
+light_specular = 1.308
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(0.0062775, 0, -0.299934, 0, 0.3, 0, 0.299934, 0, 0.0062775, -0.362527, -0.786303, -7.57022)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_4x7n6")
+
+[node name="sonar" parent="StaticBody3D" instance=ExtResource("8_u0uaj")]
+transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 0, 1.86265e-09, 0, 1, -0.0072937, 0.0174406, 0.000548482)
+
+[node name="Cube" parent="StaticBody3D/sonar" index="0"]
+transform = Transform3D(1, 0, 9.31323e-09, 0, 1, 0, -9.31323e-09, 0, 1, -0.03187, -0.238924, -0.0957726)
+surface_material_override/1 = ExtResource("3_52nqy")
+surface_material_override/2 = ExtResource("8_n6o3j")
+surface_material_override/3 = ExtResource("7_n0fol")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, -1.24565, -0.512629, -7.19022)
+
+[node name="sub" parent="StaticBody3D3" instance=ExtResource("10_u0uaj")]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
+
+[node name="Cube" parent="StaticBody3D3/sub" index="0"]
+transform = Transform3D(1.24085, 0, 3.55271e-15, 0, 1, 0, -1.77636e-14, 0, 1, 0.00354588, -0.00332507, 0.00944363)
+surface_material_override/0 = SubResource("StandardMaterial3D_52nqy")
+surface_material_override/1 = SubResource("StandardMaterial3D_4e5m7")
+
+[node name="periscope" parent="StaticBody3D3/sub" instance=ExtResource("10_px3vg")]
+transform = Transform3D(0.998814, 0, 0.0486929, 0, 1, 0, -0.0486929, 0, 0.998814, 0.491451, 0.248816, -0.0370617)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+shape = SubResource("ConcavePolygonShape3D_px3vg")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+
+[node name="terminal" parent="StaticBody3D2" instance=ExtResource("4_a1l7c")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, -2.72424, -1.26885, -7.8079)
+
+[node name="Cube_003" parent="StaticBody3D2/terminal" index="0"]
+transform = Transform3D(0.869054, -0.494709, 0.00289333, 0.494713, 0.869007, -0.00928291, 0.00207805, 0.00949872, 0.999953, -1.44752, 1.71485, 9.90159)
+surface_material_override/0 = ExtResource("5_h2bq5")
+surface_material_override/1 = ExtResource("6_n6o3j")
+surface_material_override/2 = ExtResource("7_n0fol")
+surface_material_override/3 = ExtResource("8_n6o3j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, -2.72424, -1.26885, -7.8079)
+shape = SubResource("ConvexPolygonShape3D_px3vg")
+
+[editable path="StaticBody3D/sonar"]
+[editable path="StaticBody3D3/sub"]
+[editable path="StaticBody3D2/terminal"]
