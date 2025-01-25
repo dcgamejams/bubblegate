@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bnudr3myap7vs" path="res://network/ui/MinimalUI4/Strait-Regular.ttf" id="2_ugjv2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lx4r7"]
-bg_color = Color(0.066755, 0.066755, 0.066755, 1)
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1xex"]
 bg_color = Color(0, 0, 0, 1)
@@ -74,6 +74,7 @@ theme_override_constants/side_margin = 5
 theme_override_fonts/font = ExtResource("2_ugjv2")
 theme_override_styles/panel = SubResource("StyleBoxFlat_o1xex")
 current_tab = 0
+tabs_visible = false
 
 [node name="LAN" type="VBoxContainer" parent="Network Popup"]
 layout_mode = 2
@@ -82,6 +83,7 @@ alignment = 1
 metadata/_tab_index = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Network Popup/LAN"]
+visible = false
 layout_mode = 2
 
 [node name="Address Label" type="Label" parent="Network Popup/LAN/HBoxContainer"]
@@ -95,6 +97,7 @@ size_flags_vertical = 0
 text = "localhost"
 
 [node name="Address Row" type="HBoxContainer" parent="Network Popup/LAN"]
+visible = false
 layout_mode = 2
 
 [node name="Port Label" type="Label" parent="Network Popup/LAN/Address Row"]
@@ -234,7 +237,7 @@ offset_left = -297.0
 offset_right = 297.0
 offset_bottom = 133.0
 grow_horizontal = 2
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 200
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
 layout_mode = 2
