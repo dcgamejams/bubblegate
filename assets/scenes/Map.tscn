@@ -35,7 +35,7 @@ a = Vector2(78.4, -0.6)
 b = Vector2(48.4, 37.4)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_3kb6w"]
-a = Vector2(-2, 57.4)
+a = Vector2(-1.40001, 32.6)
 b = Vector2(-0.399994, 7.99999)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ruuhv"]
@@ -65,7 +65,7 @@ b = Vector2(3.39999, 7.99999)
 b = Vector2(12.4, 10.6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0r2rp"]
-radius = 8.62091
+radius = 12.6507
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4x54j"]
 
@@ -262,7 +262,7 @@ debug_color = Color(0.635333, 0.341721, 1, 0.42)
 [node name="Rune1" type="Area2D" parent="oceanLayout"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Rune1"]
-position = Vector2(-18, 632)
+position = Vector2(-1, 644)
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_0r2rp")
 
