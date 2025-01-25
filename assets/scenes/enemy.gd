@@ -1,8 +1,15 @@
 extends CharacterBody2D
 @onready var target = $"../../Submarine"
-var speed = 10
-func _physics_process(delta: float):
+#@onready retreat = $"../GuardPath/GuardFollow/GuardDetect"
+
+
+var speed = 50
+
+func _physics_process(delta): 
+	
 	var direction = (target.position - position).normalized()
+	
 	velocity = direction * speed
-	look_at(target.position)
+	
+	
 	move_and_slide()
