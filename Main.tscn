@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw2n54o6wfs4t"]
+[gd_scene load_steps=3 format=3 uid="uid://dw2n54o6wfs4t"]
 
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://quality-godot-first-person/addons/fpc/character.tscn" id="1_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://cs3svcsup6svc" path="res://assets/scenes/Sub.tscn" id="2_uu6xs"]
-[ext_resource type="PackedScene" uid="uid://dx82irm7ibwgh" path="res://assets/scenes/water.tscn" id="3_r0du0"]
 
 [node name="Main" type="Node3D"]
 
@@ -14,6 +13,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.47638, 0)
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="SubTemp" parent="Environment" instance=ExtResource("2_uu6xs")]
-
-[node name="Water" parent="Environment" instance=ExtResource("3_r0du0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.47555, -1.20548)

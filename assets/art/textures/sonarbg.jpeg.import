@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpj1hqj67xxar"
-path.s3tc="res://.godot/imported/Metal056C.png-38ceade424c7291b83b8b47731967db1.s3tc.ctex"
+uid="uid://dpvx4m7ayb3j2"
+path.s3tc="res://.godot/imported/sonarbg.jpeg-c530cc8ed42b4e9361acd81ab8daa92d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Metal056C_1K-JPG 2/Metal056C.png"
-dest_files=["res://.godot/imported/Metal056C.png-38ceade424c7291b83b8b47731967db1.s3tc.ctex"]
+source_file="res://assets/art/textures/sonarbg.jpeg"
+dest_files=["res://.godot/imported/sonarbg.jpeg-c530cc8ed42b4e9361acd81ab8daa92d.s3tc.ctex"]
 
 [params]
 

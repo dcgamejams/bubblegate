@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://721f124lr1jc"]
+
+[ext_resource type="Shader" uid="uid://b8aw5v01v6ev" path="res://assets/art/shaders/sonar.gdshader" id="1_t2r48"]
+[ext_resource type="Texture2D" uid="uid://dpvx4m7ayb3j2" path="res://assets/art/textures/sonarbg.jpeg" id="2_eb54l"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_t2r48")
+shader_parameter/time_mod_1s = 9.81
+shader_parameter/background = ExtResource("2_eb54l")
+shader_parameter/points = null
+shader_parameter/point_color = Vector3(0.2, 1, 0.1)
+shader_parameter/sweep_color = Vector3(0.1, 0.6, 0)
+shader_parameter/k = 0.5
+shader_parameter/sweep_angle = 0.7
+shader_parameter/point_radius = 0.05
