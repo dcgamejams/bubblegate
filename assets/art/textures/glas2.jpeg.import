@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpj1hqj67xxar"
-path.s3tc="res://.godot/imported/Metal056C.png-38ceade424c7291b83b8b47731967db1.s3tc.ctex"
+uid="uid://ct4xk2w3qm2p0"
+path.s3tc="res://.godot/imported/glas2.jpeg-cc5f669b405522e113be07a602005b80.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Metal056C_1K-JPG 2/Metal056C.png"
-dest_files=["res://.godot/imported/Metal056C.png-38ceade424c7291b83b8b47731967db1.s3tc.ctex"]
+source_file="res://assets/art/textures/glas2.jpeg"
+dest_files=["res://.godot/imported/glas2.jpeg-cc5f669b405522e113be07a602005b80.s3tc.ctex"]
 
 [params]
 

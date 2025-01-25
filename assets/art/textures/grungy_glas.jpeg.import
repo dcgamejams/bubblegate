@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpj1hqj67xxar"
-path.s3tc="res://.godot/imported/Metal056C.png-38ceade424c7291b83b8b47731967db1.s3tc.ctex"
+uid="uid://b547utlkbvopr"
+path.s3tc="res://.godot/imported/grungy_glas.jpeg-2db6c6177b097d4c4c1d991c98855dcd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/Metal056C_1K-JPG 2/Metal056C.png"
-dest_files=["res://.godot/imported/Metal056C.png-38ceade424c7291b83b8b47731967db1.s3tc.ctex"]
+source_file="res://assets/art/textures/grungy_glas.jpeg"
+dest_files=["res://.godot/imported/grungy_glas.jpeg-2db6c6177b097d4c4c1d991c98855dcd.s3tc.ctex"]
 
 [params]
 
