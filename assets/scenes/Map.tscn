@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxx7eq4cveib2"]
+[gd_scene load_steps=8 format=3 uid="uid://bmhk3w0iy3dbu"]
 
 [ext_resource type="Script" uid="uid://2v286l2io7xd" path="res://assets/scripts/MapChracter.gd" id="1_c6ma7"]
 [ext_resource type="Script" uid="uid://0hd4flk2lwjj" path="res://assets/scripts/Map.gd" id="1_k2r0d"]
