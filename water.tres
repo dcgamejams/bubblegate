@@ -1,0 +1,11 @@
+[gd_resource type="BoxMesh" load_steps=2 format=3 uid="uid://dupvfkpon2e3r"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_sts0n"]
+transparency = 2
+alpha_scissor_threshold = 0.0
+alpha_antialiasing_mode = 0
+albedo_color = Color(0.607843, 0.788235, 1, 0.588235)
+
+[resource]
+material = SubResource("ORMMaterial3D_sts0n")
+size = Vector3(100, 0.1, 100)
