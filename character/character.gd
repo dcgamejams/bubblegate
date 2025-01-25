@@ -242,6 +242,8 @@ func handle_interact():
 			if interact_target.name == 'Map' and Hub.interact_timer.is_stopped() and Hub.Map.is_map_visible == false:
 				locked_mouse = mouseInput
 				Hub.Map.map_show()
+				$Head/Camera.current = false
+				Hub.Map.sub_camera.enabled = true
 			else:
 				Hub.interact(interact_target.name)
 
@@ -249,6 +251,8 @@ func handle_unlock():
 	if Input.is_action_pressed('interact') and Hub.interact_timer.is_stopped() and Hub.Map.is_map_visible == true:
 		mouseInput == locked_mouse
 		Hub.Map.map_hide()
+		$Head/Camera.current = true
+		Hub.Map.sub_camera.enabled = false
 
 func handle_jumping():
 	if jumping_enabled:

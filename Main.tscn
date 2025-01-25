@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://chjkqkhsowe7i" path="res://assets/scripts/Main.gd" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://c3ene67v4ctkd" path="res://assets/scenes/Engine.tscn" id="2_fos0i"]
 [ext_resource type="PackedScene" uid="uid://cs3svcsup6svc" path="res://assets/scenes/Sub.tscn" id="2_uu6xs"]
-[ext_resource type="PackedScene" uid="uid://bmhk3w0iy3dbu" path="res://assets/scenes/Map.tscn" id="3_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://ck6d7iov3vhse" path="res://assets/scenes/Map.tscn" id="3_3dxm6"]
 [ext_resource type="Script" uid="uid://irdiy4uk3qmf" path="res://network/scripts/join.gd" id="3_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://badtpsxn5lago" path="res://network/ui/network-popup.tscn" id="3_r0du0"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://character/character.tscn" id="4_cm0pq"]
@@ -28,7 +28,7 @@ transform = Transform3D(-4.80827e-08, 0, -1.1, 0, 1.1, 0, 1.1, 0, -4.80827e-08, 
 transform = Transform3D(0.6, 0, 0, 0, 0.395332, 0.451346, 0, -0.451346, 0.395332, -1.1376, -1.72787, -7.14987)
 
 [node name="Terminal3dEmbed" parent="EnvironmentContainer" instance=ExtResource("6_03owx")]
-transform = Transform3D(-1.08431e-08, -0.18744, 0.307354, -8.16907e-09, 0.307354, 0.18744, -0.36, -1.32878e-09, -1.35108e-08, -2.87003, -1.58449, -2.94104)
+transform = Transform3D(-1.08431e-08, -0.18744, 0.307354, -8.16907e-09, 0.307354, 0.18744, -0.36, -1.32878e-09, -1.35108e-08, -2.89556, -1.58449, -2.94104)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://cc1m2a1obsyn4")

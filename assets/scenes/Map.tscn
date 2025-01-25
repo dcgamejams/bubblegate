@@ -1,9 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://ck6d7iov3vhse"]
+[gd_scene load_steps=35 format=3 uid="uid://ck6d7iov3vhse"]
 
 [ext_resource type="Script" uid="uid://2v286l2io7xd" path="res://assets/scripts/MapChracter.gd" id="1_c6ma7"]
 [ext_resource type="Script" uid="uid://0hd4flk2lwjj" path="res://assets/scripts/Map.gd" id="1_k2r0d"]
+[ext_resource type="Texture2D" uid="uid://be1kw8birvhsw" path="res://assets/textures/sub.png" id="3_2pa8y"]
 [ext_resource type="Script" uid="uid://dwtwstknmtcb4" path="res://assets/scenes/guard_follow.gd" id="3_3kb6w"]
 [ext_resource type="Texture2D" uid="uid://c7lwlaeh2oavi" path="res://icon.svg" id="3_4x54j"]
+[ext_resource type="Texture2D" uid="uid://b5h0kh1x08t1w" path="res://assets/art/textures/anglerfish-w-yeti-crab-worm/fish-angler-Sheet.png" id="5_1nh2a"]
 [ext_resource type="Script" uid="uid://c82oqlwi1bnle" path="res://assets/scenes/enemy.gd" id="5_ruuhv"]
 [ext_resource type="Texture2D" uid="uid://d1igkw5dp8rud" path="res://assets/art/textures/water 3.png" id="6_i5vml"]
 [ext_resource type="Texture2D" uid="uid://e8l6sqpluebo" path="res://assets/art/textures/rock wall tileset.png" id="6_trfwn"]
@@ -18,7 +20,8 @@ material = SubResource("StandardMaterial3D_c6ma7")
 radius = 5.5
 height = 20.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_k2r0d"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2pa8y"]
+height = 35.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6ma7"]
 size = Vector2(2000, 29)
@@ -84,11 +87,13 @@ _data = {
 point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ruuhv"]
+size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5vml"]
 
-[node name="Map" type="Node2D"]
+[node name="Map" type="Node2D" node_paths=PackedStringArray("sub_camera")]
 script = ExtResource("1_k2r0d")
+sub_camera = NodePath("Submarine/SubCamera")
 
 [node name="Submarine" type="CharacterBody2D" parent="."]
 position = Vector2(67, 92)
@@ -98,7 +103,18 @@ script = ExtResource("1_c6ma7")
 mesh = SubResource("CapsuleMesh_k2r0d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Submarine"]
-shape = SubResource("CircleShape2D_k2r0d")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2pa8y")
+
+[node name="SubCamera" type="Camera2D" parent="Submarine"]
+position = Vector2(1, 0)
+scale = Vector2(1e-05, 1e-05)
+enabled = false
+zoom = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Submarine"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_2pa8y")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -319,7 +335,10 @@ script = ExtResource("3_3kb6w")
 
 [node name="TestSprite" type="Sprite2D" parent="Hazards/GuardPath/GuardFollow"]
 rotation = 0.927295
-texture = ExtResource("3_4x54j")
+scale = Vector2(3, 3)
+texture = ExtResource("5_1nh2a")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
 
 [node name="GuardDetect" type="Area2D" parent="Hazards/GuardPath/GuardFollow"]
 rotation = 0.927295
@@ -342,9 +361,17 @@ shape = SubResource("RectangleShape2D_i5vml")
 shape = SubResource("RectangleShape2D_i5vml")
 
 [node name="Sprite2D" type="Sprite2D" parent="Hazards/Chase/CollisionShape2D"]
+visible = false
 position = Vector2(0.000121551, -1.00026)
 scale = Vector2(0.995748, 1.00029)
 texture = ExtResource("3_4x54j")
+
+[node name="TestSprite" type="Sprite2D" parent="Hazards/Chase/CollisionShape2D"]
+rotation = 0.927295
+scale = Vector2(3, 3)
+texture = ExtResource("5_1nh2a")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
 
 [node name="MapBackground" type="Node2D" parent="."]
 
@@ -694,3 +721,4 @@ texture = ExtResource("9_qlsg3")
 [connection signal="body_entered" from="oceanLayout/Rune2" to="." method="_on_rune_2_body_entered"]
 [connection signal="body_entered" from="oceanLayout/Rune3" to="." method="_on_rune_3_body_entered"]
 [connection signal="body_entered" from="oceanLayout/Rune4" to="." method="_on_rune_4_body_entered"]
+[connection signal="body_entered" from="Hazards/GuardPath/GuardFollow/GuardDetect" to="." method="_on_guard_detect_body_entered"]

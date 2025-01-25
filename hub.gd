@@ -15,6 +15,8 @@ var Sub: Node3D
 var HullMonitor: Node3D
 var Terminal: Node3D
 
+var SubmarinePlayer: CharacterBody2D
+
 var speed = 0.0
 var depth = 100.0
 
@@ -44,11 +46,7 @@ func interact(interact_event):
 			decrease_speed.emit()
 		"PowerUp":
 			increase_speed.emit()
-		"Map":
-			if Map.is_map_visible == false:
-				Map.map_show()
-			else:
-				Map.map_hide()
+
 
 func _on_take_damage(damage): 
 	if hull_health - damage > 0:
@@ -62,3 +60,6 @@ func _on_take_damage(damage):
 
 func show_new_text(_new_text): 
 	Terminal.label.text = _new_text
+
+
+	
