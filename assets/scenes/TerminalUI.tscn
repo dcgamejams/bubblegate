@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cihliwbnaea43"]
 
-[ext_resource type="Script" uid="uid://cashhf4j4xys0" path="res://assets/scenes/terminal_ui.gd" id="1_wnack"]
+[ext_resource type="Script" path="res://assets/scenes/terminal_ui.gd" id="1_wnack"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e0hcg"]
 font_size = 32
