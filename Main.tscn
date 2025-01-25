@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw2n54o6wfs4t"]
+
+[ext_resource type="PackedScene" uid="uid://cs3svcsup6svc" path="res://sub_temp/sub_temp.tscn" id="1_glv2v"]
+
+[node name="Main" type="Node3D"]
+
+[node name="SubTemp" parent="." instance=ExtResource("1_glv2v")]
