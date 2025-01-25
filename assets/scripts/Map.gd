@@ -12,5 +12,5 @@ func _process(delta: float) -> void:
 
 
 func _on_treasure_body_entered(body: Node2D) -> void:
-	$Terminal.text = 'YOU HIT TREASURE'
+	$Terminal.text = 'picture of atlantis'
 	pass # Replace with function body.
