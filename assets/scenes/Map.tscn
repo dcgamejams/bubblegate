@@ -1,7 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bmhk3w0iy3dbu"]
+[gd_scene load_steps=25 format=3 uid="uid://bmhk3w0iy3dbu"]
 
 [ext_resource type="Script" uid="uid://2v286l2io7xd" path="res://assets/scripts/MapChracter.gd" id="1_c6ma7"]
 [ext_resource type="Script" uid="uid://0hd4flk2lwjj" path="res://assets/scripts/Map.gd" id="1_k2r0d"]
+[ext_resource type="Script" uid="uid://dwtwstknmtcb4" path="res://assets/scenes/guard_follow.gd" id="3_3kb6w"]
+[ext_resource type="Texture2D" uid="uid://c7lwlaeh2oavi" path="res://icon.svg" id="3_4x54j"]
+[ext_resource type="Script" uid="uid://c82oqlwi1bnle" path="res://assets/scenes/enemy.gd" id="5_ruuhv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6ma7"]
 albedo_color = Color(1, 0, 1, 1)
@@ -60,17 +63,25 @@ b = Vector2(10.4, 9.00001)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0r2rp"]
 radius = 8.62091
 
+[sub_resource type="Curve2D" id="Curve2D_3kb6w"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 351, 623, 0, 0, 0, 0, 543, 367, 0, 0, 0, 0, 792, 577, 0, 0, 0, 0, 570, 804, 0, 0, 0, 0, 351, 623)
+}
+point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ruuhv"]
+
 [node name="Map" type="Node2D"]
 script = ExtResource("1_k2r0d")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Submarine" type="CharacterBody2D" parent="."]
 position = Vector2(67, 92)
 script = ExtResource("1_c6ma7")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Submarine"]
 mesh = SubResource("CapsuleMesh_k2r0d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Submarine"]
 shape = SubResource("CircleShape2D_k2r0d")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -106,8 +117,6 @@ position = Vector2(-193, 907)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
 position = Vector2(1988, -465)
 shape = SubResource("RectangleShape2D_k2r0d")
-
-[node name="Enemy" type="Area2D" parent="."]
 
 [node name="oceanLayout" type="Node2D" parent="."]
 
@@ -262,5 +271,36 @@ position = Vector2(1670, 78.0001)
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_0r2rp")
 
-[connection signal="area_entered" from="Enemy" to="CharacterBody2D" method="_on_enemy_area_entered"]
+[node name="Hazards" type="Node2D" parent="."]
+position = Vector2(155, -119)
+scale = Vector2(1.00427, 0.999709)
+
+[node name="GuardPath" type="Path2D" parent="Hazards"]
+curve = SubResource("Curve2D_3kb6w")
+
+[node name="GuardFollow" type="PathFollow2D" parent="Hazards/GuardPath"]
+position = Vector2(351, 623)
+rotation = -0.927295
+scale = Vector2(0.99965, 1.0069)
+script = ExtResource("3_3kb6w")
+
+[node name="TestSprite" type="Sprite2D" parent="Hazards/GuardPath/GuardFollow"]
+rotation = 0.927295
+texture = ExtResource("3_4x54j")
+
+[node name="GuardDetect" type="Area2D" parent="Hazards/GuardPath/GuardFollow"]
+rotation = 0.927295
+scale = Vector2(1, 1.00989)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/GuardPath/GuardFollow/GuardDetect"]
+scale = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_ruuhv")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Hazards"]
+position = Vector2(308.682, 245.071)
+script = ExtResource("5_ruuhv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_4x54j")
+
 [connection signal="body_entered" from="oceanLayout/PictureOfAtlantis" to="." method="_on_treasure_body_entered"]
