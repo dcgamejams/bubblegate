@@ -16,7 +16,7 @@ func _register_with_sonar_callback(origin: Vector2, scale: float):
 	if len(points)+1>256:
 		points.remove_at(0)
 	points.append(xyz)
-	print(xyz)
+
 func _init():
 	register_with_sonar.connect(_register_with_sonar_callback)
 			
@@ -36,7 +36,7 @@ func _process(dt):
 			uniform_array.append(Vector3.ZERO)
 	get_surface_override_material(1).set_shader_parameter("time_mod_1s", t+dt)
 	var array=PackedVector3Array(uniform_array)
-	print(len(array))
+	#print(len(array))
+	
 	get_surface_override_material(1).set_shader_parameter("points", array)
 	t+=dt
-	print(t)
