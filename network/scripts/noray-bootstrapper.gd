@@ -92,7 +92,7 @@ func host():
 	# However, this script also runs in multiplayer-simple where NetworkEvents
 	# are assumed to be absent, hence starting NetworkTime manually
 	NetworkTime.start()
-	JoinMenu.on_host()
+	get_parent().get_parent().hide()
 
 func join():
 	role = Role.CLIENT
@@ -171,6 +171,7 @@ func _handle_connect(address: String, port: int) -> Error:
 		# However, this script also runs in multiplayer-simple where NetworkEvents
 		# are assumed to be absent, hence starting NetworkTime manually
 		NetworkTime.start()
+		get_parent().get_parent().hide()
 
 	if role == Role.HOST:
 		# We should already have the connection configured, only thing to do is a handshake

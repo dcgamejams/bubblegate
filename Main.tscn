@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw2n54o6wfs4t"]
+[gd_scene load_steps=5 format=3 uid="uid://dw2n54o6wfs4t"]
 
 [ext_resource type="PackedScene" uid="uid://cs3svcsup6svc" path="res://assets/scenes/Sub.tscn" id="2_uu6xs"]
+[ext_resource type="Script" uid="uid://irdiy4uk3qmf" path="res://network/scripts/join.gd" id="3_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://badtpsxn5lago" path="res://network/ui/network-popup.tscn" id="3_r0du0"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://character/character.tscn" id="4_cm0pq"]
 
 [node name="Main" type="Node3D"]
 
@@ -16,3 +18,34 @@ _spawnable_scenes = PackedStringArray("uid://cc1m2a1obsyn4")
 spawn_path = NodePath("../PlayersContainer")
 
 [node name="Network Popup" parent="." instance=ExtResource("3_r0du0")]
+
+[node name="Join" type="Node" parent="."]
+script = ExtResource("3_cm0pq")
+player_scene = ExtResource("4_cm0pq")
+
+[node name="Marker3D" type="Marker3D" parent="Join"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34183, -0.868083, 0)
+
+[node name="Marker3D4" type="Marker3D" parent="Join"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8131, -0.868083, 3.43194)
+
+[node name="Marker3D5" type="Marker3D" parent="Join"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97606, -0.868083, 6.31249)
+
+[node name="Marker3D2" type="Marker3D" parent="Join"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05375, -0.868083, 3.87817)
+
+[node name="Marker3D3" type="Marker3D" parent="Join"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58345, -0.868083, -0.563543)
+
+[node name="Marker3D6" type="Marker3D" parent="Join"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58345, -0.868083, 1.80695)
+
+[node name="Marker3D7" type="Marker3D" parent="Join"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0256212, -0.868083, 1.80695)
+
+[node name="Marker3D8" type="Marker3D" parent="Join"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46571, -0.868083, 1.80695)
+
+[node name="Marker3D9" type="Marker3D" parent="Join"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46571, -0.868083, 7.30843)

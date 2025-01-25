@@ -152,7 +152,7 @@ func get_time() -> float:
 	return _clock.get_time()
 
 func _loop():
-	_logger.info("Time sync loop started! Initial timestamp: %ss", [_clock.get_time()])
+	#_logger.info("Time sync loop started! Initial timestamp: %ss", [_clock.get_time()])
 	on_initial_sync.emit()
 
 	while _active:
@@ -248,11 +248,11 @@ func _send_pong(idx: int, ping_received: float, pong_sent: float):
 
 @rpc("any_peer", "call_remote", "reliable")
 func _request_timestamp():
-	_logger.debug("Requested initial timestamp @ %.4fs raw time", [_clock.get_raw_time()])
+	#_logger.debug("Requested initial timestamp @ %.4fs raw time", [_clock.get_raw_time()])
 	_set_timestamp.rpc_id(multiplayer.get_remote_sender_id(), _clock.get_time())
 
 @rpc("any_peer", "call_remote", "reliable")
 func _set_timestamp(timestamp: float):
-	_logger.debug("Received initial timestamp @ %.4fs raw time", [_clock.get_raw_time()])
+	#_logger.debug("Received initial timestamp @ %.4fs raw time", [_clock.get_raw_time()])
 	_clock.set_time(timestamp)
 	_loop()

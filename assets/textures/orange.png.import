@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pe7a4weirj2g"
-path.s3tc="res://.godot/imported/dark.png-1beed53594e4f31f1dffd550189ffc54.s3tc.ctex"
+uid="uid://dsv4jm4vydflb"
+path.s3tc="res://.godot/imported/orange.png-7e4e73214404208388c16fa06ea2e46c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://quality-godot-first-person/textures/dark.png"
-dest_files=["res://.godot/imported/dark.png-1beed53594e4f31f1dffd550189ffc54.s3tc.ctex"]
+source_file="res://assets/textures/orange.png"
+dest_files=["res://.godot/imported/orange.png-7e4e73214404208388c16fa06ea2e46c.s3tc.ctex"]
 
 [params]
 

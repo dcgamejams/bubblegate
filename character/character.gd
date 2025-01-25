@@ -99,25 +99,40 @@ var gravity : float = ProjectSettings.get_setting("physics/3d/default_gravity") 
 # Stores mouse input for rotating the camera in the phyhsics process
 var mouseInput : Vector2 = Vector2(0,0)
 
-func _ready():
-	#It is safe to comment this line if your game doesn't start with the mouse captured
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
-	# If the controller is rotated in a certain direction for game design purposes, redirect this rotation into the head.
-	HEAD.rotation.y = rotation.y
-	rotation.y = 0
-	
-	if default_reticle:
-		change_reticle(default_reticle)
-	
-	# Reset the camera position
-	# If you want to change the default head height, change these animations.
-	HEADBOB_ANIMATION.play("RESET")
-	JUMP_ANIMATION.play("RESET")
-	CROUCH_ANIMATION.play("RESET")
-	
-	check_controls()
+var id = null
 
+func _enter_tree():
+	set_multiplayer_authority(str(name).to_int())
+	id = str(name).to_int()
+
+func _ready():
+	set_process(get_multiplayer_authority() == multiplayer.get_unique_id())
+	set_physics_process(get_multiplayer_authority() == multiplayer.get_unique_id())
+	set_process_unhandled_input(get_multiplayer_authority() == multiplayer.get_unique_id())
+	set_process_input(get_multiplayer_authority() == multiplayer.get_unique_id())
+
+	if get_multiplayer_authority() == multiplayer.get_unique_id(): 
+		#It is safe to comment this line if your game doesn't start with the mouse captured
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		
+		# If the controller is rotated in a certain direction for game design purposes, redirect this rotation into the head.
+		HEAD.rotation.y = rotation.y
+		rotation.y = 0
+		
+		if default_reticle:
+			change_reticle(default_reticle)
+		
+		# Reset the camera position
+		# If you want to change the default head height, change these animations.
+		HEADBOB_ANIMATION.play("RESET")
+		JUMP_ANIMATION.play("RESET")
+		CROUCH_ANIMATION.play("RESET")
+	
+		check_controls()
+
+		$Head/GasMask.hide()
+
+	
 func check_controls(): # If you add a control, you might want to add a check for it here.
 	# The actions are being disabled so the engine doesn't halt the entire project in debug mode
 	if !InputMap.has_action(JUMP):

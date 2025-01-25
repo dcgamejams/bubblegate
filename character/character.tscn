@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=23 format=3 uid="uid://cc1m2a1obsyn4"]
 
-[ext_resource type="Script" uid="uid://0ckuy6d05vvt" path="res://quality-godot-first-person/addons/fpc/character.gd" id="1_0t4e8"]
-[ext_resource type="Script" uid="uid://dxuvv83pau5l2" path="res://quality-godot-first-person/addons/fpc/EditorModule.gd" id="3_v3ckk"]
-[ext_resource type="Script" uid="uid://ced6xtblnn1x2" path="res://quality-godot-first-person/addons/fpc/debug.gd" id="3_x1wcc"]
+[ext_resource type="Script" uid="uid://0ckuy6d05vvt" path="res://character/character.gd" id="1_0t4e8"]
+[ext_resource type="Script" uid="uid://dxuvv83pau5l2" path="res://character/EditorModule.gd" id="3_v3ckk"]
+[ext_resource type="Script" uid="uid://ced6xtblnn1x2" path="res://character/debug.gd" id="3_x1wcc"]
+[ext_resource type="PackedScene" uid="uid://8y140a3bt1qg" path="res://assets/art/models/gas mask.glb" id="4_vucat"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
 albedo_color = Color(0.909804, 0.596078, 0, 1)
@@ -351,6 +352,17 @@ MarginContainer/constants/margin_top = 10
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k4wwl"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_a1fiu"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Head:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
 [node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH")]
 script = ExtResource("1_0t4e8")
 default_reticle = "uid://coqpusufa8a6k"
@@ -363,7 +375,6 @@ COLLISION_MESH = NodePath("Collision")
 CROUCH = "DISABLED"
 SPRINT = "DISABLED"
 continuous_jumping = false
-view_bobbing = false
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -394,6 +405,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_qeg5r")
 }
 speed_scale = 4.0
+
+[node name="GasMask" parent="Head" instance=ExtResource("4_vucat")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.0707124, -0.421421)
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
@@ -427,3 +441,6 @@ target_position = Vector3(0, 0.5, 0)
 
 [node name="EditorModule" type="Node" parent="."]
 script = ExtResource("3_v3ckk")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_a1fiu")

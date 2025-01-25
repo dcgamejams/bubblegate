@@ -1,87 +1,70 @@
-extends Control
+extends Node
 
-const SERVER_ADDRESS: String = "127.0.0.1"
-const SERVER_PORT: int = 9999
-const MAX_PLAYERS : int = 10
+@export var player_scene: PackedScene
+@export var spawn_points: Array[Marker3D] = []
 
-const player_scene = preload("res://quality-godot-first-person/addons/fpc/character.tscn")
+var avatars: Dictionary = {}
 
-var players = {}
-var player_info = {
-	"nick" : "host",
-	"color" : "blue"
-}
-
-func _ready() -> void:
-	multiplayer.server_disconnected.connect(_on_connection_failed)
-	multiplayer.connection_failed.connect(_on_server_disconnected)
-	multiplayer.peer_disconnected.connect(_on_player_disconnected)
-	multiplayer.peer_connected.connect(_on_player_connected)
-	multiplayer.connected_to_server.connect(_on_connected_ok)
-	#var args = OS.get_cmdline_user_args()
-	#for arg in args:
-		#var key_value = arg.rsplit("=")
-		#match key_value[0]:
-			#"server":
-				#print('DEBUG: SERVER STARTING `-- server` found')
-				#start_host()
+func _ready():
+	NetworkEvents.on_client_start.connect(_handle_connected)
+	NetworkEvents.on_server_start.connect(_handle_host)
+	NetworkEvents.on_peer_join.connect(_handle_new_peer)
+	NetworkEvents.on_peer_leave.connect(_handle_leave)
+	NetworkEvents.on_client_stop.connect(_handle_stop)
+	NetworkEvents.on_server_stop.connect(_handle_stop)
 	
-func _on_connected_ok():
-	var peer_id = multiplayer.get_unique_id()
-	players[peer_id] = player_info
-	
-func _on_player_connected(id):
-	if Hub.players_container.has_node(str(id)) or not multiplayer.is_server() or id == 1:
+	for marker in get_children():
+		spawn_points.push_back(marker)
+
+func _handle_connected(id: int):
+	# Spawn an avatar for us
+	_spawn(id)
+
+func _handle_host():
+	# Spawn own avatar on host machine
+	_spawn(1)
+
+func _handle_new_peer(id: int):
+	# Spawn an avatar for new player
+	_spawn(id)
+
+func _handle_leave(id: int):
+	if not avatars.has(id):
 		return
-	player_info["nick"] = "Player_" + str(multiplayer.get_unique_id())
-	_register_player.rpc_id(id, player_info)
 	
-	var player = player_scene.instantiate()
-	player.name = str(id)
-	Hub.players_container.add_child(player, true)
-		
-	# TODO: 
-	#for id in Network.players.keys():
-		#var _player_data = Network.players[id]
-		#if id != peer_id:
-			# These are client only syncs, to set player properties.
-			#rpc_id(peer_id, "sync_player_skin", id, player_data["skin"])
-			#rpc_id(peer_id, "sync_player_skin", id, player_data["skin"])
-func on_host():
-	hide()
+	var avatar = avatars[id] as Node
+	avatar.queue_free()
+	avatars.erase(id)
+
+func _handle_stop():
+	# Remove all avatars on game end
+	for avatar in avatars.values():
+		avatar.queue_free()
+	avatars.clear()
+
+func _spawn(id: int):
+	var avatar = player_scene.instantiate() as Node
+	avatars[id] = avatar
+	avatar.name += " #%d" % id
+	add_child(avatar)
+	avatar.global_position = get_next_spawn_point(id)
 	
-func join():
-	pass
+	# Avatar is always owned by server
+	#avatar.set_multiplayer_authority(1)
 
-func _on_player_disconnected(id):
-	players.erase(id)
-
-func _on_connection_failed():
-	multiplayer.multiplayer_peer = null
-	get_tree().quit()
-
-func _on_server_disconnected():
-	multiplayer.multiplayer_peer = null
-	players.clear()
-	#Hub.server_disconnected.emit()
-
-@rpc("any_peer", "reliable")
-func _register_player(new_player_info):
-	var new_player_id = multiplayer.get_remote_sender_id()
-	players[new_player_id] = new_player_info
-	#Hub.player_connected.emit(new_player_id, new_player_info)
+	print("Spawned avatar %s at %s" % [avatar.name, multiplayer.get_unique_id()])
 	
-func _remove_player(id):
-	if not multiplayer.is_server() or not Hub.players_container.has_node(str(id)):
-		return
-	var player_node = Hub.players_container.get_node(str(id))
-	if player_node:
-		player_node.queue_free()
+	# Avatar's input object is owned by player
+	var input = avatar.find_child("Input")
+	if input != null:
+		input.set_multiplayer_authority(id)
+		print("Set input(%s) ownership to %s" % [input.name, id])
 
-func _add_player(id):
-	var player = player_scene.instantiate()
-	player.name = str(id)
-	Hub.players_container.add_child(player, true)
+func get_next_spawn_point(peer_id: int, spawn_idx: int = 0) -> Vector3:
+	# The same data is used to calculate the index on all peers
+	# As a result, spawn points are the same, even without sync
+	var idx := peer_id * 37 + spawn_idx * 19
+	idx = hash(idx)
+	idx = idx % spawn_points.size()
 
-func _on_quit_pressed() -> void:
-	get_tree().quit()
+	return spawn_points[idx].global_position

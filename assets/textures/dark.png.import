@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxjxvqmf4boxq"
-path.s3tc="res://.godot/imported/green.png-3af261f39afe979d67a01e38c56af3f4.s3tc.ctex"
+uid="uid://pe7a4weirj2g"
+path.s3tc="res://.godot/imported/dark.png-bcb332b9b1637759629475ed3d588878.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://quality-godot-first-person/textures/green.png"
-dest_files=["res://.godot/imported/green.png-3af261f39afe979d67a01e38c56af3f4.s3tc.ctex"]
+source_file="res://assets/textures/dark.png"
+dest_files=["res://.godot/imported/dark.png-bcb332b9b1637759629475ed3d588878.s3tc.ctex"]
 
 [params]
 

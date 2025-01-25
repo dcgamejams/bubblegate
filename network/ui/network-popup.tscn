@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://badtpsxn5lago"]
+[gd_scene load_steps=10 format=3 uid="uid://badtpsxn5lago"]
 
 [ext_resource type="Theme" uid="uid://b3kq74llqlv3x" path="res://network/ui/MinimalUI4/MinimalUI.tres" id="1_0g4l5"]
 [ext_resource type="Script" uid="uid://w7kdslvls2td" path="res://network/scripts/lan-bootstrapper.gd" id="1_dy86e"]
-[ext_resource type="Script" uid="uid://irdiy4uk3qmf" path="res://network/scripts/join.gd" id="1_o1xex"]
 [ext_resource type="Script" uid="uid://ck4pq6yjbdjcq" path="res://network/scripts/noray-bootstrapper.gd" id="2_fgck5"]
 [ext_resource type="FontFile" uid="uid://bnudr3myap7vs" path="res://network/ui/MinimalUI4/Strait-Regular.ttf" id="2_ugjv2"]
 
@@ -44,7 +43,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_o1xex")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -212,12 +210,11 @@ text = "Force Relay"
 layout_mode = 2
 text = "Quit"
 
-[node name="LAN Bootstrapper" type="Node" parent="Network Popup" node_paths=PackedStringArray("connect_ui", "address_input", "port_input", "JoinMenu")]
+[node name="LAN Bootstrapper" type="Node" parent="Network Popup" node_paths=PackedStringArray("connect_ui", "address_input", "port_input")]
 script = ExtResource("1_dy86e")
 connect_ui = NodePath("..")
 address_input = NodePath("../LAN/HBoxContainer/Address LineEdit")
 port_input = NodePath("../LAN/Address Row/Port LineEdit")
-JoinMenu = NodePath("../..")
 
 [node name="Noray Bootstrapper" type="Node" parent="Network Popup" node_paths=PackedStringArray("connect_ui", "noray_address_input", "oid_input", "host_oid_input", "force_relay_check", "JoinMenu")]
 script = ExtResource("2_fgck5")

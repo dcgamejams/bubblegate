@@ -45,7 +45,7 @@ func host():
 	# are assumed to be absent, hence starting NetworkTime manually
 	NetworkTime.start()
 
-	JoinMenu.on_host()
+	get_parent().get_parent().hide()
 
 func join():
 	var host = _parse_input()
@@ -84,7 +84,7 @@ func join():
 	# are assumed to be absent, hence starting NetworkTime manually
 	NetworkTime.start()
 
-	JoinMenu.join()
+	get_parent().get_parent().hide()
 
 func _parse_input() -> Dictionary:
 	# Validate inputs

@@ -43,6 +43,7 @@ static var _logger: _NetfoxLogger = _NetfoxLogger.for_netfox("NetworkPerformance
 ## Can be forced on with the [code]netfox_perf[/code] feature tag. [br]
 ## Can be forced off with the [code]netfox_noperf[/code] feature tag.
 func is_enabled():
+	return false
 	if OS.has_feature("netfox_noperf"):
 		return false
 	
