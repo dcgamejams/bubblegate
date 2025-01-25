@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://by4p5expf36b8" path="res://assets/art/models/terminal.glb" id="2_0qcgy"]
 [ext_resource type="Material" uid="uid://cg5uilit6ep8h" path="res://assets/art/textures/terminal_frame.tres" id="3_27fjf"]
 [ext_resource type="Texture2D" uid="uid://dmpcmcf0q8fsk" path="res://assets/textures/Metal056C_1K-JPG 2/Metal056C_1K-JPG_Roughness.jpg" id="3_ymio1"]
-[ext_resource type="Material" uid="uid://c4lfdx0y326if" path="res://assets/art/textures/terminal_screen.tres" id="4_2u68e"]
+[ext_resource type="Material" uid="uid://b481j7vsey6mj" path="res://assets/art/textures/terminal_screen.tres" id="4_2u68e"]
 [ext_resource type="Material" uid="uid://bes3sivkdfn5a" path="res://assets/art/textures/terminal.tres" id="5_0b8rl"]
 [ext_resource type="PackedScene" uid="uid://ddkk4a4jqpdq5" path="res://assets/art/models/sonar.glb" id="6_gwsqi"]
 [ext_resource type="Material" uid="uid://721f124lr1jc" path="res://assets/art/models/sonar.tres" id="7_0kgnv"]
