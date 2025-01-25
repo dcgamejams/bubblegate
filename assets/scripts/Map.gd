@@ -14,3 +14,8 @@ func _process(delta: float) -> void:
 func _on_treasure_body_entered(body: Node2D) -> void:
 	$Terminal.text = 'picture of atlantis'
 	pass # Replace with function body.
+
+
+func _on_enemy_body_entered(body: Node2D) -> void:
+	$Terminal.text = 'YOU HIT Enemy'
+	pass # Replace with function body.
