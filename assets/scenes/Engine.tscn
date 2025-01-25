@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3ene67v4ctkd"]
+
+[ext_resource type="PackedScene" uid="uid://d2yaj1x5sp8ok" path="res://assets/art/models/Generator.glb" id="1_xe26i"]
+
+[node name="Engine" type="Node3D"]
+
+[node name="Root Scene" parent="." instance=ExtResource("1_xe26i")]
+
+[node name="Cylinder_001" parent="Root Scene/RootNode" index="0"]
+transform = Transform3D(2.15353e-06, -5.45551e-06, 56.0677, 0, -36.1302, -8.46599e-06, 36.1302, 3.25174e-13, -3.3419e-06, 0, 0, 0)
+
+[editable path="Root Scene"]

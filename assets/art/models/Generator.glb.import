@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b3l4p7vi51c6w"
-path="res://.godot/imported/Pipes.fbx-06fbeeff6cc7ba38261126f1f64087ea.scn"
+uid="uid://d2yaj1x5sp8ok"
+path="res://.godot/imported/Generator.glb-cca6bfb4f2ea589779308ce05a7b063d.scn"
 
 [deps]
 
-source_file="res://assets/art/models/Pipes.fbx"
-dest_files=["res://.godot/imported/Pipes.fbx-06fbeeff6cc7ba38261126f1f64087ea.scn"]
+source_file="res://assets/art/models/Generator.glb"
+dest_files=["res://.godot/imported/Generator.glb-cca6bfb4f2ea589779308ce05a7b063d.scn"]
 
 [params]
 
@@ -28,17 +28,16 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=true
+animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "nodes": {
-"PATH:Pipes": {
+"PATH:RootNode/Cylinder_001": {
 "generate/physics": true
 }
 }
 }
-fbx/importer=0
-fbx/allow_geometry_helper_nodes=false
-fbx/embedded_image_handling=1
+gltf/naming_version=1
+gltf/embedded_image_handling=1
