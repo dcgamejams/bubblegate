@@ -6,11 +6,11 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_t2r48")
-shader_parameter/time_mod_1s = 9.81
+shader_parameter/time_mod_1s = 0.33
 shader_parameter/background = ExtResource("2_eb54l")
-shader_parameter/points = null
+shader_parameter/points = PackedVector3Array()
 shader_parameter/point_color = Vector3(0.2, 1, 0.1)
 shader_parameter/sweep_color = Vector3(0.1, 0.6, 0)
-shader_parameter/k = 0.5
-shader_parameter/sweep_angle = 0.7
-shader_parameter/point_radius = 0.05
+shader_parameter/k = 8.0
+shader_parameter/sweep_angle = 0.85
+shader_parameter/point_radius = 0.3

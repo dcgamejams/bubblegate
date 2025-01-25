@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dw2n54o6wfs4t"]
 
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://quality-godot-first-person/addons/fpc/character.tscn" id="1_uu6xs"]
-[ext_resource type="PackedScene" uid="uid://cs3svcsup6svc" path="res://assets/scenes/Sub.tscn" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://d14imagf2ob14" path="res://assets/scenes/Sub.tscn" id="2_uu6xs"]
 
 [node name="Main" type="Node3D"]
 
