@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ddkk4a4jqpdq5" path="res://assets/art/models/sonar.glb" id="6_gwsqi"]
 [ext_resource type="Material" uid="uid://721f124lr1jc" path="res://assets/art/models/sonar.tres" id="7_0kgnv"]
 [ext_resource type="Material" uid="uid://c642aeha85nqj" path="res://assets/art/textures/terminal_etc.tres" id="8_7gjum"]
-[ext_resource type="Script" uid="uid://d1r34f5qi0ibe" path="res://assets/scenes/sonar.gd" id="8_pjlvp"]
+[ext_resource type="Script" uid="uid://ca3svpxuqdulv" path="res://assets/scenes/sonar.gd" id="8_pjlvp"]
 [ext_resource type="PackedScene" uid="uid://b3l4p7vi51c6w" path="res://assets/art/models/Pipes.fbx" id="9_g1iop"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ymio1"]
