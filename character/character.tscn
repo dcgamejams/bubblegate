@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=25 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" uid="uid://0ckuy6d05vvt" path="res://character/character.gd" id="1_0t4e8"]
 [ext_resource type="Script" uid="uid://dxuvv83pau5l2" path="res://character/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" uid="uid://ced6xtblnn1x2" path="res://character/debug.gd" id="3_x1wcc"]
+[ext_resource type="Theme" uid="uid://b3kq74llqlv3x" path="res://network/ui/MinimalUI4/MinimalUI.tres" id="4_0rvpn"]
 [ext_resource type="PackedScene" uid="uid://8y140a3bt1qg" path="res://assets/art/models/gas mask.glb" id="4_vucat"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kp17n"]
@@ -344,6 +345,9 @@ _data = {
 &"land_right": SubResource("Animation_vsknp")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hx151"]
+size = Vector3(0.2, 0.2, 3)
+
 [sub_resource type="Theme" id="Theme_wdf0f"]
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
@@ -363,8 +367,9 @@ properties/2/path = NodePath("Head:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
-[node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH")]
+[node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH", "INTERACT")]
 script = ExtResource("1_0t4e8")
+mouse_sensitivity = 0.05
 default_reticle = "uid://coqpusufa8a6k"
 HEAD = NodePath("Head")
 CAMERA = NodePath("Head/Camera")
@@ -372,6 +377,7 @@ HEADBOB_ANIMATION = NodePath("Head/HeadbobAnimation")
 JUMP_ANIMATION = NodePath("Head/JumpAnimation")
 CROUCH_ANIMATION = NodePath("CrouchAnimation")
 COLLISION_MESH = NodePath("Collision")
+INTERACT = NodePath("Head/InteractArea")
 CROUCH = "DISABLED"
 SPRINT = "DISABLED"
 continuous_jumping = false
@@ -409,6 +415,14 @@ speed_scale = 4.0
 [node name="GasMask" parent="Head" instance=ExtResource("4_vucat")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.0707124, -0.421421)
 
+[node name="InteractArea" type="Area3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/InteractArea"]
+shape = SubResource("BoxShape3D_hx151")
+
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -416,7 +430,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 
 [node name="DebugPanel" type="PanelContainer" parent="UserInterface"]
 visible = false
@@ -434,6 +448,31 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/DebugPanel/MarginContainer"]
 layout_mode = 2
 
+[node name="PanelContainer" type="Control" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="InteractLabel" type="Label" parent="UserInterface/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_top = 421.0
+offset_right = 1728.0
+offset_bottom = 486.0
+theme = ExtResource("4_0rvpn")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 6
+horizontal_alignment = 1
+
 [node name="CrouchCeilingDetection" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("SphereShape3D_k4wwl")
@@ -444,3 +483,8 @@ script = ExtResource("3_v3ckk")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_a1fiu")
+
+[connection signal="area_entered" from="Head/InteractArea" to="." method="_on_interact_area_area_entered"]
+[connection signal="area_exited" from="Head/InteractArea" to="." method="_on_interact_area_area_exited"]
+[connection signal="body_entered" from="Head/InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="Head/InteractArea" to="." method="_on_interact_area_body_exited"]
