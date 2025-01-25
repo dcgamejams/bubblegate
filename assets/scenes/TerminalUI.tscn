@@ -1,11 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://cihliwbnaea43"]
 
-[ext_resource type="Script" uid="uid://cashhf4j4xys0" path="res://assets/scenes/terminal_ui.gd" id="1_wnack"]
+[ext_resource type="Script" path="res://assets/scenes/terminal_ui.gd" id="1_wnack"]
 [ext_resource type="Theme" uid="uid://b3kq74llqlv3x" path="res://network/ui/MinimalUI4/MinimalUI.tres" id="2_sevbs"]
 
 [sub_resource type="Theme" id="Theme_wnack"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e0hcg"]
+font_size = 32
 font_color = Color(0, 1, 0, 1)
 
 [node name="TerminalUI" type="Control"]
