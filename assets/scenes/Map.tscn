@@ -299,14 +299,14 @@ scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_4x54j")
 
 [node name="Hazards" type="Node2D" parent="."]
-position = Vector2(155, -119)
+position = Vector2(154, -118)
 scale = Vector2(1.00427, 0.999709)
 
 [node name="GuardPath" type="Path2D" parent="Hazards"]
 curve = SubResource("Curve2D_3kb6w")
 
 [node name="GuardFollow" type="PathFollow2D" parent="Hazards/GuardPath"]
-position = Vector2(351, 623)
+position = Vector2(350.503, 623.181)
 rotation = -0.927295
 scale = Vector2(0.99965, 1.0069)
 script = ExtResource("3_3kb6w")
@@ -324,16 +324,23 @@ scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_ruuhv")
 
 [node name="Chase" type="CharacterBody2D" parent="Hazards"]
-position = Vector2(75.6769, 181.053)
+position = Vector2(942.973, 373.109)
 scale = Vector2(1, 1)
 script = ExtResource("5_ruuhv")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hazards/Chase"]
-scale = Vector2(0.995748, 1.00029)
-texture = ExtResource("3_4x54j")
+[node name="ChaseArea" type="Area2D" parent="Hazards/Chase"]
+
+[node name="ChaseHitbox" type="CollisionShape2D" parent="Hazards/Chase/ChaseArea"]
+shape = SubResource("RectangleShape2D_i5vml")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Chase"]
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_i5vml")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hazards/Chase/CollisionShape2D"]
+position = Vector2(0.000121551, -1.00026)
+scale = Vector2(0.995748, 1.00029)
+texture = ExtResource("3_4x54j")
 
 [connection signal="body_entered" from="oceanLayout/PictureOfAtlantis" to="." method="_on_treasure_body_entered"]
 [connection signal="input_event" from="oceanLayout/AtlantisDoor" to="." method="_on_atlantis_door_input_event"]

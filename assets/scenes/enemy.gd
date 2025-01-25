@@ -1,6 +1,6 @@
 extends CharacterBody2D
 @onready var target = $"../../Submarine"
-var targetPos
+#@onready retreat = $"../GuardPath/GuardFollow/GuardDetect"
 
 
 var speed = 50
