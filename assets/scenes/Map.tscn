@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxx7eq4cveib2"]
+
+[ext_resource type="Script" uid="uid://2v286l2io7xd" path="res://assets/scripts/MapChracter.gd" id="1_c6ma7"]
+[ext_resource type="Script" uid="uid://0hd4flk2lwjj" path="res://assets/scripts/Map.gd" id="1_k2r0d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6ma7"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_k2r0d"]
+material = SubResource("StandardMaterial3D_c6ma7")
+radius = 5.5
+height = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k2r0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6ma7"]
+size = Vector2(2000, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c6ma7"]
+radius = 42.0
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_k2r0d")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(500, 500)
+script = ExtResource("1_c6ma7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
+mesh = SubResource("CapsuleMesh_k2r0d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_k2r0d")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(827, 920)
+shape = SubResource("RectangleShape2D_c6ma7")
+
+[node name="Treasure" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Treasure"]
+position = Vector2(949, 835)
+shape = SubResource("CircleShape2D_c6ma7")
+
+[node name="Terminal" type="Label" parent="."]
+offset_left = 239.0
+offset_top = 150.0
+offset_right = 673.0
+offset_bottom = 173.0
+theme_override_font_sizes/font_size = 80
+text = "Test text"
+
+[connection signal="body_entered" from="Treasure" to="." method="_on_treasure_body_entered"]
