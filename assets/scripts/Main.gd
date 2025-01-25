@@ -5,3 +5,4 @@ func _ready() -> void:
 	Hub.Map = $EnvironmentContainer/Map
 	Hub.Sub = $EnvironmentContainer/Sub
 	Hub.HullMonitor = $EnvironmentContainer/HullMonitor
+	Hub.Terminal = $EnvironmentContainer/Terminal3dEmbed

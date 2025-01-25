@@ -58,3 +58,7 @@ func _on_take_damage(damage):
 		hull_health = 0
 		HullMonitor.bar.value = hull_health
 		speed = 0
+		show_new_text('CRITICAL DAMAGE GAME OVER')
+
+func show_new_text(_new_text): 
+	Terminal.label.text = _new_text

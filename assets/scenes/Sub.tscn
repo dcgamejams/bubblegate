@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bpo8nprwpegqv" path="res://assets/art/models/Button.glb" id="13_8e1cm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ymio1"]
-size = Vector3(2.69775, 1, 1)
+size = Vector3(2.8, 1, 2)
 
 [sub_resource type="Environment" id="Environment_vkwla"]
 tonemap_mode = 3
@@ -101,30 +101,21 @@ size = Vector3(0.4, 0.2, 0.4)
 [node name="Sub" type="Node3D"]
 script = ExtResource("1_5ujj3")
 
-[node name="Screen" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.788011, 0.615662, 0, -0.615662, 0.788011, 0, -1.4188, -7.5322)
+[node name="SonarHitbox" type="StaticBody3D" parent="."]
 
-[node name="Label3D" type="Label3D" parent="Screen"]
-transform = Transform3D(0.464565, 0.0565556, -0.108191, -0.02371, 1.183, -0.0370851, 0.0418766, 0.0423935, 1.17925, -2.79564, 0.0140879, -0.221493)
-modulate = Color(0.0342545, 0.358601, 0, 1)
-text = "Text this is what we can do
-something here as well."
-font_size = 26
-outline_size = 0
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SonarHitbox"]
+transform = Transform3D(1, 0, 0, 0, 2.03942, 0, 0, 0, 1, 0.12664, -1.77022, -7.71998)
+shape = SubResource("BoxShape3D_ymio1")
 
 [node name="Console" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.39471, -7.94141)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Console"]
-transform = Transform3D(1, 0, 0, 0, 2.03942, 0, 0, 0, 1, -2.88926, 0.287861, 0)
-shape = SubResource("BoxShape3D_ymio1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Console/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 2.03942, 0, 0, 0, 2.85135, -3.1029, -0.302658, 0.012754)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Console"]
+transform = Transform3D(1, 0, 0, 0, 4.15923, 0, 0, 0, 2.85135, -4.14711, -0.329386, 5.18201)
 shape = SubResource("BoxShape3D_ymio1")
 
 [node name="terminal" parent="Console" instance=ExtResource("2_0qcgy")]
-transform = Transform3D(-0.0123716, 0, -0.0976995, 0, 0.1, 0, 0.113698, 0, -0.0106308, 0.328324, 0.800865, 1.12404)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -2.21139, 0.801, 0.0880575)
 
 [node name="Cube_003" parent="Console/terminal" index="0"]
 transform = Transform3D(0.865824, -0.500348, 1.49012e-08, 0.500348, 0.865824, 0, 7.45058e-09, 0, 1, -6.20762, 0.293182, 42.7822)
@@ -162,13 +153,16 @@ omni_range = 12.055
 environment = SubResource("Environment_vkwla")
 
 [node name="Pipes" parent="." instance=ExtResource("9_g1iop")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.01348, -2.93419, -2.1365)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.01348, -2.93419, 4.22552)
 
 [node name="Pipes2" parent="." instance=ExtResource("9_g1iop")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84217, -2.93419, -1.44355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84217, -2.93419, 4.68477)
+
+[node name="Pipes3" parent="." instance=ExtResource("9_g1iop")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84217, -2.93419, -5.56824)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.00464251, 0.999989, 0, -0.999989, -0.00464251, -1.77053, 0.80825, -7.38518)
+transform = Transform3D(1, 0, 0, 0, -0.00464251, 0.999989, 0, -0.999989, -0.00464251, -2.62848, 0.80825, -3.43163)
 light_energy = 3.909
 light_indirect_energy = 4.232
 light_volumetric_fog_energy = 3.263
@@ -179,7 +173,7 @@ spot_attenuation = 2.0
 spot_angle = 61.86
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.00464251, 0.999989, 0, -0.999989, -0.00464251, 2.31162, 0.80825, -7.38518)
+transform = Transform3D(1, 0, 0, 0, -0.00464251, 0.999989, 0, -0.999989, -0.00464251, 1.39566, 0.80825, -7.38518)
 light_energy = 3.909
 light_indirect_energy = 4.232
 light_volumetric_fog_energy = 3.263

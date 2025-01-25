@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy6s6uhdug50c"]
+
+[ext_resource type="PackedScene" uid="uid://cihliwbnaea43" path="res://assets/scenes/TerminalUI.tscn" id="1_n2po3"]
+[ext_resource type="Script" uid="uid://pm0hge4y0fww" path="res://assets/scripts/terminal_3d_embed.gd" id="1_xxun0"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bqqmc"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Terminal3dEmbed" type="Node3D"]
+script = ExtResource("1_xxun0")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(400, 250)
+
+[node name="TerminalUI" parent="SubViewport" instance=ExtResource("1_n2po3")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" parent="SubViewport/TerminalUI" index="1"]
+text = "INITIALIZING BUBBLE GATE v2.0.1
+"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_bqqmc")
+
+[editable path="SubViewport/TerminalUI"]

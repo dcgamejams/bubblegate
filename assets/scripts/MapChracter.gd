@@ -12,6 +12,8 @@ const JUMP_VELOCITY = -400.0
 var speed_current_index = 0
 var speed_array = [15, 35, 75, 100]
 
+var is_sub = true
+
 func _ready():
 	Hub.increase_speed.connect(_on_increase_speed)
 	Hub.decrease_speed.connect(_on_decrease_speed)
