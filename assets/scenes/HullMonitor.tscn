@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqotgssorourc"]
+
+[ext_resource type="Theme" uid="uid://b3kq74llqlv3x" path="res://network/ui/MinimalUI4/MinimalUI.tres" id="1_w63ww"]
+[ext_resource type="Script" uid="uid://bajlgvbovjvoi" path="res://assets/scripts/hull_monitor.gd" id="1_xlied"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlied"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyc1r"]
+bg_color = Color(0.6, 0, 0.00999985, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w63ww"]
+viewport_path = NodePath("SubViewport")
+
+[node name="HullMonitor" type="Node3D"]
+script = ExtResource("1_xlied")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(100, 400)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+offset_right = 94.0
+offset_bottom = 328.0
+theme = ExtResource("1_w63ww")
+theme_override_styles/background = SubResource("StyleBoxFlat_xlied")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cyc1r")
+value = 20.0
+fill_mode = 3
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_w63ww")

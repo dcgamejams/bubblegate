@@ -1,5 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://cs3svcsup6svc"]
+[gd_scene load_steps=35 format=3 uid="uid://cs3svcsup6svc"]
 
+[ext_resource type="Script" uid="uid://uuemltvwf2ju" path="res://assets/scenes/Sub.gd" id="1_5ujj3"]
 [ext_resource type="Texture2D" uid="uid://d1r0xv7shpl86" path="res://assets/textures/Metal056C_1K-JPG/Metal056C_1K-JPG_Color.jpg" id="1_o1xw5"]
 [ext_resource type="PackedScene" uid="uid://by4p5expf36b8" path="res://assets/art/models/terminal.glb" id="2_0qcgy"]
 [ext_resource type="Material" uid="uid://cg5uilit6ep8h" path="res://assets/art/textures/terminal_frame.tres" id="3_27fjf"]
@@ -10,10 +11,12 @@
 [ext_resource type="Material" uid="uid://721f124lr1jc" path="res://assets/art/models/sonar.tres" id="7_0kgnv"]
 [ext_resource type="Material" uid="uid://c642aeha85nqj" path="res://assets/art/textures/terminal_etc.tres" id="8_7gjum"]
 [ext_resource type="Script" uid="uid://c5sygsvjym32g" path="res://assets/scenes/sonar.gd" id="8_pjlvp"]
+
 [ext_resource type="PackedScene" uid="uid://b3l4p7vi51c6w" path="res://assets/art/models/Pipes.fbx" id="9_g1iop"]
+[ext_resource type="PackedScene" uid="uid://bpo8nprwpegqv" path="res://assets/art/models/Button.glb" id="13_8e1cm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ymio1"]
-size = Vector3(2.69775, 1, 1)
+size = Vector3(2.8, 1, 2)
 
 [sub_resource type="Environment" id="Environment_vkwla"]
 tonemap_mode = 3
@@ -93,32 +96,27 @@ material = SubResource("StandardMaterial3D_v1wi0")
 height = 0.1
 cap_bottom = false
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ujj3"]
+size = Vector3(0.4, 0.2, 0.4)
+
 [node name="Sub" type="Node3D"]
+script = ExtResource("1_5ujj3")
 
-[node name="Screen" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.788011, 0.615662, 0, -0.615662, 0.788011, 0, -1.4188, -7.5322)
+[node name="SonarHitbox" type="StaticBody3D" parent="."]
 
-[node name="Label3D" type="Label3D" parent="Screen"]
-transform = Transform3D(0.464565, 0.0565556, -0.108191, -0.02371, 1.183, -0.0370851, 0.0418766, 0.0423935, 1.17925, -2.79564, 0.0140879, -0.221493)
-modulate = Color(0.0342545, 0.358601, 0, 1)
-text = "Text this is what we can do
-something here as well."
-font_size = 26
-outline_size = 0
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SonarHitbox"]
+transform = Transform3D(1, 0, 0, 0, 2.03942, 0, 0, 0, 1, 0.12664, -1.77022, -7.71998)
+shape = SubResource("BoxShape3D_ymio1")
 
 [node name="Console" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.39471, -7.94141)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Console"]
-transform = Transform3D(1, 0, 0, 0, 2.03942, 0, 0, 0, 1, -2.88926, 0.287861, 0)
-shape = SubResource("BoxShape3D_ymio1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Console/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 2.03942, 0, 0, 0, 2.85135, -3.1029, -0.302658, 0.012754)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Console"]
+transform = Transform3D(1, 0, 0, 0, 4.15923, 0, 0, 0, 2.85135, -4.14711, -0.329386, 5.18201)
 shape = SubResource("BoxShape3D_ymio1")
 
 [node name="terminal" parent="Console" instance=ExtResource("2_0qcgy")]
-transform = Transform3D(-0.0123716, 0, -0.0976995, 0, 0.1, 0, 0.113698, 0, -0.0106308, 0.328324, 0.800865, 1.12404)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -2.21139, 0.801, 0.0880575)
 
 [node name="Cube_003" parent="Console/terminal" index="0"]
 transform = Transform3D(0.865824, -0.500348, 1.49012e-08, 0.500348, 0.865824, 0, 7.45058e-09, 0, 1, -6.20762, 0.293182, 42.7822)
@@ -144,17 +142,39 @@ light_indirect_energy = 1.14
 light_volumetric_fog_energy = 1.218
 omni_range = 12.055
 
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.354768, -1.71563)
+light_color = Color(1, 0.643137, 0.235294, 1)
+light_energy = 2.306
+light_indirect_energy = 1.14
+light_volumetric_fog_energy = 1.218
+omni_range = 12.055
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vkwla")
 
 [node name="Pipes" parent="." instance=ExtResource("9_g1iop")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.01348, -2.93419, -2.1365)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.01348, -2.93419, 4.22552)
 
 [node name="Pipes2" parent="." instance=ExtResource("9_g1iop")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84217, -2.93419, -1.44355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84217, -2.93419, 4.68477)
+
+[node name="Pipes3" parent="." instance=ExtResource("9_g1iop")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84217, -2.93419, -5.56824)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.00464251, 0.999989, 0, -0.999989, -0.00464251, -1.77053, 0.80825, -7.38518)
+transform = Transform3D(1, 0, 0, 0, -0.00464251, 0.999989, 0, -0.999989, -0.00464251, -2.62848, 0.80825, -3.43163)
+light_energy = 3.909
+light_indirect_energy = 4.232
+light_volumetric_fog_energy = 3.263
+light_size = 0.091
+light_specular = 0.177
+spot_range = 4096.0
+spot_attenuation = 2.0
+spot_angle = 61.86
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00464251, 0.999989, 0, -0.999989, -0.00464251, 1.39566, 0.80825, -7.38518)
 light_energy = 3.909
 light_indirect_energy = 4.232
 light_volumetric_fog_energy = 3.263
@@ -238,6 +258,17 @@ shape = SubResource("BoxShape3D_cgx24")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="SubmarineHull/Console"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.561946, 0)
 mesh = SubResource("CylinderMesh_38th7")
+
+[node name="Map" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.753127, -0.657875, 0, 0.657875, 0.753127, 1.17654, -1.66721, -7.07995)
+collision_layer = 2
+collision_mask = 2
+
+[node name="MapButtonModel" parent="Map" instance=ExtResource("13_8e1cm")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map"]
+shape = SubResource("BoxShape3D_5ujj3")
 
 [editable path="Console/terminal"]
 [editable path="Console/sonar"]
