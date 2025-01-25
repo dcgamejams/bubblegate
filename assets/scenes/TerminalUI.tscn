@@ -1,3 +1,26 @@
-[gd_scene format=3 uid="uid://cihliwbnaea43"]
+[gd_scene load_steps=3 format=3 uid="uid://cihliwbnaea43"]
 
-[node name="TerminalUI" type="Node3D"]
+[ext_resource type="Script" uid="uid://cashhf4j4xys0" path="res://assets/scenes/terminal_ui.gd" id="1_wnack"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e0hcg"]
+font_size = 32
+font_color = Color(0, 1, 0, 1)
+
+[node name="TerminalUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wnack")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1729.0
+offset_bottom = 967.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1725.0
+offset_bottom = 962.0
+text = "Terminal"
+label_settings = SubResource("LabelSettings_e0hcg")
+autowrap_mode = 3
