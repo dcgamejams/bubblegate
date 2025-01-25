@@ -1,0 +1,259 @@
+[gd_scene load_steps=11 format=3 uid="uid://badtpsxn5lago"]
+
+[ext_resource type="Theme" uid="uid://b3kq74llqlv3x" path="res://network/ui/MinimalUI4/MinimalUI.tres" id="1_0g4l5"]
+[ext_resource type="Script" uid="uid://w7kdslvls2td" path="res://network/scripts/lan-bootstrapper.gd" id="1_dy86e"]
+[ext_resource type="Script" uid="uid://irdiy4uk3qmf" path="res://network/scripts/join.gd" id="1_o1xex"]
+[ext_resource type="Script" uid="uid://ck4pq6yjbdjcq" path="res://network/scripts/noray-bootstrapper.gd" id="2_fgck5"]
+[ext_resource type="FontFile" uid="uid://bnudr3myap7vs" path="res://network/ui/MinimalUI4/Strait-Regular.ttf" id="2_ugjv2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lx4r7"]
+bg_color = Color(0.066755, 0.066755, 0.066755, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1xex"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxqct"]
+bg_color = Color(0.30617, 0, 0.070231, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugjv2"]
+bg_color = Color(0.6, 0.066, 0.066, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blg6c"]
+bg_color = Color(0.6, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="JoinMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o1xex")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lx4r7")
+
+[node name="Network Popup" type="TabContainer" parent="."]
+custom_minimum_size = Vector2(360, 240)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.5
+offset_top = -48.5
+offset_right = 125.5
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_0g4l5")
+theme_override_constants/side_margin = 5
+theme_override_fonts/font = ExtResource("2_ugjv2")
+theme_override_styles/panel = SubResource("StyleBoxFlat_o1xex")
+current_tab = 0
+
+[node name="LAN" type="VBoxContainer" parent="Network Popup"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+metadata/_tab_index = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Network Popup/LAN"]
+layout_mode = 2
+
+[node name="Address Label" type="Label" parent="Network Popup/LAN/HBoxContainer"]
+layout_mode = 2
+text = "Address:"
+
+[node name="Address LineEdit" type="LineEdit" parent="Network Popup/LAN/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "localhost"
+
+[node name="Address Row" type="HBoxContainer" parent="Network Popup/LAN"]
+layout_mode = 2
+
+[node name="Port Label" type="Label" parent="Network Popup/LAN/Address Row"]
+layout_mode = 2
+text = "Port:"
+
+[node name="Port LineEdit" type="LineEdit" parent="Network Popup/LAN/Address Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "16384"
+
+[node name="Actions Row" type="HBoxContainer" parent="Network Popup/LAN"]
+layout_mode = 2
+
+[node name="Host Button" type="Button" parent="Network Popup/LAN/Actions Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Host"
+
+[node name="Join Button" type="Button" parent="Network Popup/LAN/Actions Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_sxqct")
+text = "Join"
+
+[node name="Quit" type="Button" parent="Network Popup/LAN"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Noray" type="VBoxContainer" parent="Network Popup"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Noray Address Row" type="HBoxContainer" parent="Network Popup/Noray"]
+layout_mode = 2
+
+[node name="Address Label" type="Label" parent="Network Popup/Noray/Noray Address Row"]
+layout_mode = 2
+text = "noray host:"
+
+[node name="Address LineEdit" type="LineEdit" parent="Network Popup/Noray/Noray Address Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "tomfol.io:8890"
+placeholder_text = "noray.example.com:8890"
+
+[node name="OID Row" type="HBoxContainer" parent="Network Popup/Noray"]
+layout_mode = 2
+
+[node name="OID Label" type="Label" parent="Network Popup/Noray/OID Row"]
+layout_mode = 2
+text = "Open ID: "
+
+[node name="OID Value" type="LineEdit" parent="Network Popup/Noray/OID Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "123456789"
+editable = false
+
+[node name="Noray Actions Row" type="HBoxContainer" parent="Network Popup/Noray"]
+layout_mode = 2
+
+[node name="Disconnect Button" type="Button" parent="Network Popup/Noray/Noray Actions Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Disconnect"
+
+[node name="Connect Button" type="Button" parent="Network Popup/Noray/Noray Actions Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_ugjv2")
+text = "Connect"
+
+[node name="HSeparator" type="HSeparator" parent="Network Popup/Noray"]
+layout_mode = 2
+
+[node name="Connect Host Row" type="HBoxContainer" parent="Network Popup/Noray"]
+layout_mode = 2
+
+[node name="Host Label" type="Label" parent="Network Popup/Noray/Connect Host Row"]
+layout_mode = 2
+text = "Target Host: "
+
+[node name="Host LineEdit" type="LineEdit" parent="Network Popup/Noray/Connect Host Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Host OID"
+
+[node name="Connect Actions Row" type="HBoxContainer" parent="Network Popup/Noray"]
+layout_mode = 2
+
+[node name="Host Button" type="Button" parent="Network Popup/Noray/Connect Actions Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Host"
+
+[node name="Join Button" type="Button" parent="Network Popup/Noray/Connect Actions Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_blg6c")
+text = "Join"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Network Popup/Noray"]
+layout_mode = 2
+
+[node name="Force Relay Checkbox" type="CheckBox" parent="Network Popup/Noray/HBoxContainer"]
+layout_mode = 2
+text = "Force Relay"
+
+[node name="Quit" type="Button" parent="Network Popup/Noray"]
+layout_mode = 2
+text = "Quit"
+
+[node name="LAN Bootstrapper" type="Node" parent="Network Popup" node_paths=PackedStringArray("connect_ui", "address_input", "port_input", "JoinMenu")]
+script = ExtResource("1_dy86e")
+connect_ui = NodePath("..")
+address_input = NodePath("../LAN/HBoxContainer/Address LineEdit")
+port_input = NodePath("../LAN/Address Row/Port LineEdit")
+JoinMenu = NodePath("../..")
+
+[node name="Noray Bootstrapper" type="Node" parent="Network Popup" node_paths=PackedStringArray("connect_ui", "noray_address_input", "oid_input", "host_oid_input", "force_relay_check", "JoinMenu")]
+script = ExtResource("2_fgck5")
+connect_ui = NodePath("..")
+noray_address_input = NodePath("../Noray/Noray Address Row/Address LineEdit")
+oid_input = NodePath("../Noray/OID Row/OID Value")
+host_oid_input = NodePath("../Noray/Connect Host Row/Host LineEdit")
+force_relay_check = NodePath("../Noray/HBoxContainer/Force Relay Checkbox")
+JoinMenu = NodePath("../..")
+
+[node name="Menu" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -297.0
+offset_right = 297.0
+offset_bottom = 133.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="Menu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_0g4l5")
+theme_override_font_sizes/font_size = 120
+text = "Bubble Gate"
+
+[connection signal="pressed" from="Network Popup/LAN/Actions Row/Host Button" to="Network Popup/LAN Bootstrapper" method="host"]
+[connection signal="pressed" from="Network Popup/LAN/Actions Row/Join Button" to="Network Popup/LAN Bootstrapper" method="join"]
+[connection signal="pressed" from="Network Popup/LAN/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Network Popup/Noray/Noray Actions Row/Disconnect Button" to="Network Popup/Noray Bootstrapper" method="disconnect_from_noray"]
+[connection signal="pressed" from="Network Popup/Noray/Noray Actions Row/Connect Button" to="Network Popup/Noray Bootstrapper" method="connect_to_noray"]
+[connection signal="pressed" from="Network Popup/Noray/Connect Actions Row/Host Button" to="Network Popup/Noray Bootstrapper" method="host"]
+[connection signal="pressed" from="Network Popup/Noray/Connect Actions Row/Join Button" to="Network Popup/Noray Bootstrapper" method="join"]
+[connection signal="pressed" from="Network Popup/Noray/Quit" to="." method="_on_quit_pressed"]
