@@ -1,12 +1,71 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3ene67v4ctkd"]
+[gd_scene load_steps=10 format=3 uid="uid://c3ene67v4ctkd"]
 
+[ext_resource type="Script" uid="uid://b03lmirwu54wb" path="res://assets/scripts/engine.gd" id="1_vbw1f"]
 [ext_resource type="PackedScene" uid="uid://d2yaj1x5sp8ok" path="res://assets/art/models/Generator.glb" id="1_xe26i"]
+[ext_resource type="PackedScene" uid="uid://bpo8nprwpegqv" path="res://assets/art/models/Button.glb" id="2_ulklq"]
+[ext_resource type="PackedScene" uid="uid://d0s7ted0b7bde" path="res://assets/art/models/Arrow.glb" id="3_tabdo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tabdo"]
+albedo_color = Color(0.45098, 0.486275, 0.380392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vbw1f"]
+material = SubResource("StandardMaterial3D_tabdo")
+size = Vector3(1.5, 0.4, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5667"]
+albedo_color = Color(0.462745, 0.470588, 0.494118, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3u481"]
+material = SubResource("StandardMaterial3D_q5667")
+size = Vector3(0.4, 0.2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tabdo"]
+size = Vector3(0.2, 0.2, 0.2)
 
 [node name="Engine" type="Node3D"]
+script = ExtResource("1_vbw1f")
 
 [node name="Root Scene" parent="." instance=ExtResource("1_xe26i")]
 
 [node name="Cylinder_001" parent="Root Scene/RootNode" index="0"]
 transform = Transform3D(2.15353e-06, -5.45551e-06, 56.0677, 0, -36.1302, -8.46599e-06, 36.1302, 3.25174e-13, -3.3419e-06, 0, 0, 0)
+
+[node name="block1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38196, 0.876034, 0)
+mesh = SubResource("BoxMesh_vbw1f")
+
+[node name="block2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.464635, 0.560642, 0.510562)
+mesh = SubResource("BoxMesh_3u481")
+
+[node name="ArrowGroup" type="Node3D" parent="."]
+
+[node name="ButtonModelLeft" parent="ArrowGroup" instance=ExtResource("2_ulklq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.021106, 0.947724, 0.265368)
+
+[node name="ButtonModelRight" parent="ArrowGroup" instance=ExtResource("2_ulklq")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.806401, 0.947724, 0.265368)
+
+[node name="Arrow" parent="ArrowGroup" instance=ExtResource("3_tabdo")]
+transform = Transform3D(0.923518, 0.0432187, 0.381113, -0.383419, 0.0775074, 0.920317, 0.0102358, -0.996055, 0.0881504, 1.03592, 0.985342, 0.220511)
+
+[node name="Arrow2" parent="ArrowGroup" instance=ExtResource("3_tabdo")]
+transform = Transform3D(-0.918571, -0.0430921, -0.392901, 0.392674, 0.0139684, -0.919572, 0.0451145, -0.998973, 0.00409019, -0.242849, 0.870098, 0.206896)
+
+[node name="PowerDown" type="Area3D" parent="ArrowGroup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0103163, 0.957987, 0.182838)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ArrowGroup/PowerDown"]
+shape = SubResource("BoxShape3D_tabdo")
+
+[node name="PowerUp" type="Area3D" parent="ArrowGroup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.803785, 0.960129, 0.182838)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ArrowGroup/PowerUp"]
+shape = SubResource("BoxShape3D_tabdo")
 
 [editable path="Root Scene"]

@@ -38,6 +38,9 @@ extends CharacterBody3D
 @export var CROUCH_ANIMATION : AnimationPlayer
 @export var COLLISION_MESH : CollisionShape3D
 
+@export var INTERACT : Area3D
+
+
 @export_group("Controls")
 # We are using UI controls because they are built into Godot Engine so they can be used right away
 @export var JUMP : String = "ui_accept"
@@ -201,6 +204,7 @@ func _physics_process(delta):
 	# The player is not able to stand up if the ceiling is too low
 	low_ceiling = $CrouchCeilingDetection.is_colliding()
 	
+	handle_interact()
 	handle_state(input_dir)
 	if dynamic_fov: # This may be changed to an AnimationPlayer
 		update_camera_fov()
@@ -218,6 +222,11 @@ func _physics_process(delta):
 	
 	was_on_floor = is_on_floor() # This must always be at the end of physics_process
 
+
+
+func handle_interact():
+	if Input.is_action_pressed('interact') and is_on_floor():
+		Hub.interact(interact_target.name)
 
 func handle_jumping():
 	if jumping_enabled:
@@ -407,3 +416,15 @@ func _unhandled_input(event : InputEvent):
 			# Where we're going, we don't need InputMap
 			if event.keycode == 4194338: # F7
 				$UserInterface/DebugPanel.visible = !$UserInterface/DebugPanel.visible
+
+
+var interact_target: Node3D = null
+
+func _on_interact_area_area_entered(area: Area3D) -> void:
+	interact_target = area
+	%InteractLabel.text = area.name
+
+func _on_interact_area_area_exited(area: Area3D) -> void:
+	if interact_target: 
+		interact_target = null
+		%InteractLabel.text = ''

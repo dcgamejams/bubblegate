@@ -57,6 +57,7 @@ b = Vector2(23.4, 53.6)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_1nh2a"]
 b = Vector2(10.4, 9.00001)
 
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_0r2rp"]
 a = Vector2(-7.4, -2.00001)
 b = Vector2(3.39999, 7.99999)
@@ -272,6 +273,7 @@ shape = SubResource("CircleShape2D_0r2rp")
 position = Vector2(1526, 748)
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_0r2rp")
+
 
 [node name="Rune3" type="Area2D" parent="oceanLayout"]
 

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw2n54o6wfs4t"]
+[gd_scene load_steps=6 format=3 uid="uid://dw2n54o6wfs4t"]
 
+[ext_resource type="PackedScene" uid="uid://c3ene67v4ctkd" path="res://assets/scenes/Engine.tscn" id="2_fos0i"]
 [ext_resource type="PackedScene" uid="uid://cs3svcsup6svc" path="res://assets/scenes/Sub.tscn" id="2_uu6xs"]
 [ext_resource type="Script" uid="uid://irdiy4uk3qmf" path="res://network/scripts/join.gd" id="3_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://badtpsxn5lago" path="res://network/ui/network-popup.tscn" id="3_r0du0"]
@@ -12,6 +13,9 @@
 [node name="EnvironmentContainer" type="Node3D" parent="."]
 
 [node name="Sub" parent="EnvironmentContainer" instance=ExtResource("2_uu6xs")]
+
+[node name="Engine" parent="EnvironmentContainer" instance=ExtResource("2_fos0i")]
+transform = Transform3D(-1.09978, 0, 0.0221536, 0, 1.1, 0, -0.0221536, 0, -1.09978, 1.12271, -2.3141, 7.25891)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://cc1m2a1obsyn4")
