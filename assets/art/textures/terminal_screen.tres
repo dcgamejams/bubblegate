@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://c4lfdx0y326if"]
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://b481j7vsey6mj"]
 
 [ext_resource type="Texture2D" uid="uid://b5qjn2emxbvrn" path="res://assets/art/textures/screen.png" id="1_d1716"]
 [ext_resource type="Texture2D" uid="uid://ct4xk2w3qm2p0" path="res://assets/art/textures/glas2.jpeg" id="2_of2tk"]
