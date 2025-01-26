@@ -140,4 +140,5 @@ func _on_atlantis_door_interact_area_body_entered(body: Node2D) -> void:
 			if finish == true:
 				$Terminal.text = "You win the videogame"
 			Hub.show_new_text($Terminal.text)
+			$RadarPing.play()
 			pass # Replace with function body.
