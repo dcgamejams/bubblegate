@@ -53,16 +53,21 @@ shape = SubResource("CapsuleShape3D_wkp8b")
 [node name="SoundContainer" type="Node3D" parent="."]
 
 [node name="Clank" type="AudioStreamPlayer3D" parent="SoundContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19337, 0, -0.501372)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="SoundContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.908493, 0.494629, 0)
 
 [node name="StoveClick" type="AudioStreamPlayer3D" parent="SoundContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49501, 0.0769712, -0.243518)
 stream = ExtResource("8_20pc6")
 
 [node name="RepairClank" type="AudioStreamPlayer3D" parent="SoundContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.02316)
 stream = ExtResource("9_5vvyt")
 
 [node name="DamageNoise" type="AudioStreamPlayer3D" parent="SoundContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.68705, 0, -2.82588)
 stream = ExtResource("10_c6i3y")
 
 [node name="EngineHum" type="AudioStreamPlayer3D" parent="SoundContainer"]
