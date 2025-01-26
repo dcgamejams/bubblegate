@@ -19,9 +19,11 @@ func _physics_process(delta):
 
 func _on_chase_h_box_body_entered(body: Node2D) -> void:
 	if(body ==$"../../Submarine"):
+		Hub.play_sound('DamageNoise')
 		Hub.take_damage.emit(30)
 		target = $"../../oceanLayout/PictureOfAtlantis/CollisionShape2D"
 		speed = 100
+		
 	#if(body ==$"../../oceanLayout/PictureOfAtlantis/CollisionShape2D" ):
 
 	

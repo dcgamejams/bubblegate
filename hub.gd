@@ -46,23 +46,29 @@ func interact(interact_event):
 	match interact_event:
 		"PowerDown":
 			decrease_speed.emit()
+			play_sound('StoveClick')
 		"PowerUp":
 			increase_speed.emit()
+			play_sound('StoveClick')
 		"Repair":
+			play_sound('RepairClank')
 			_on_repair(4)
 			
 func _on_repair(health): 
 	if hull_health + health <= 100:
 		hull_health = hull_health + health
 		HullMonitor.bar.value = hull_health
+		
 	else:
 		hull_health = 100
 		HullMonitor.bar.value = hull_health
 
 func _on_take_damage(damage): 
+	play_sound('DamageNoise')
 	if hull_health - damage > 0:
 		hull_health = hull_health - damage
 		HullMonitor.bar.value = hull_health
+		
 	else:
 		hull_health = 0
 		HullMonitor.bar.value = hull_health

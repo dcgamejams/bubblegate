@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dw2n54o6wfs4t"]
+[gd_scene load_steps=15 format=3 uid="uid://dw2n54o6wfs4t"]
 
 [ext_resource type="Script" uid="uid://chjkqkhsowe7i" path="res://assets/scripts/Main.gd" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://c3ene67v4ctkd" path="res://assets/scenes/Engine.tscn" id="2_fos0i"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bqotgssorourc" path="res://assets/scenes/HullMonitor.tscn" id="5_trn2v"]
 [ext_resource type="PackedScene" uid="uid://dy6s6uhdug50c" path="res://assets/scenes/Terminal3DEmbed.tscn" id="6_03owx"]
 [ext_resource type="PackedScene" uid="uid://545urpc6radw" path="res://assets/art/models/SteampunkPipes.glb" id="7_wkp8b"]
+[ext_resource type="AudioStream" uid="uid://h6wpo63t78dh" path="res://assets/audio/sfx/turn_stove_on_01.ogg" id="8_20pc6"]
+[ext_resource type="AudioStream" uid="uid://bw7d1p3fs2rll" path="res://assets/audio/sfx/clank1.wav" id="9_5vvyt"]
+[ext_resource type="AudioStream" uid="uid://iky7ylsu6tp1" path="res://assets/audio/sfx/crush.wav" id="10_c6i3y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wkp8b"]
 radius = 0.7
@@ -49,6 +52,15 @@ shape = SubResource("CapsuleShape3D_wkp8b")
 [node name="SoundContainer" type="Node3D" parent="."]
 
 [node name="Sound1" type="AudioStreamPlayer3D" parent="SoundContainer"]
+
+[node name="StoveClick" type="AudioStreamPlayer3D" parent="SoundContainer"]
+stream = ExtResource("8_20pc6")
+
+[node name="RepairClank" type="AudioStreamPlayer3D" parent="SoundContainer"]
+stream = ExtResource("9_5vvyt")
+
+[node name="DamageNoise" type="AudioStreamPlayer3D" parent="SoundContainer"]
+stream = ExtResource("10_c6i3y")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://cc1m2a1obsyn4")
