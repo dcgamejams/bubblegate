@@ -23,9 +23,12 @@ func _physics_process(delta):
 func _on_chase_h_box_body_entered(body: Node2D) -> void:
 	if(body ==$"../../Submarine"):
 		Hub.take_damage.emit(17)
+		$FishNoise.play()
 		target = $"../../RetreatMarkerForEnemy"
 		speed = 250
 		is_retreating = true
+		
+
 	
 # chase
 func _on_picture_of_atlantis_body_entered(body: Node2D) -> void:

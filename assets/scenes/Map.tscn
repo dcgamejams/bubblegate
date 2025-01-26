@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ck6d7iov3vhse"]
+[gd_scene load_steps=45 format=3 uid="uid://ck6d7iov3vhse"]
 
 [ext_resource type="Script" uid="uid://2v286l2io7xd" path="res://assets/scripts/MapChracter.gd" id="1_c6ma7"]
 [ext_resource type="Script" uid="uid://0hd4flk2lwjj" path="res://assets/scripts/Map.gd" id="1_k2r0d"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c82oqlwi1bnle" path="res://assets/scenes/enemy.gd" id="5_ruuhv"]
 [ext_resource type="Texture2D" uid="uid://d1igkw5dp8rud" path="res://assets/art/textures/water 3.png" id="6_i5vml"]
 [ext_resource type="Texture2D" uid="uid://e8l6sqpluebo" path="res://assets/art/textures/rock wall tileset.png" id="6_trfwn"]
+[ext_resource type="AudioStream" uid="uid://iky7ylsu6tp1" path="res://assets/audio/sfx/crush.wav" id="7_3b11w"]
 [ext_resource type="Texture2D" uid="uid://bh67806bpy84q" path="res://assets/art/textures/rocks2.png" id="8_qlsg3"]
 [ext_resource type="Texture2D" uid="uid://bda3i472l7th7" path="res://BlueBackground.png" id="9_qlsg3"]
 [ext_resource type="Texture2D" uid="uid://c4meb6tlyfxo1" path="res://assets/art/textures/ship_two.png" id="11_0r2rp"]
@@ -16,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ogd3tqqk23c" path="res://assets/art/textures/Stone_Floor.png" id="14_eg7wb"]
 [ext_resource type="Texture2D" uid="uid://cc1mhrs5qs1dt" path="res://assets/art/textures/smallrockround_640.png" id="16_jpge2"]
 [ext_resource type="Texture2D" uid="uid://dilmjg31qjw8r" path="res://assets/art/textures/ironGate.jpg" id="17_4sn2y"]
+[ext_resource type="AudioStream" uid="uid://3d2cnxl85uxa" path="res://assets/audio/sfx/beep1.wav" id="18_eg7wb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6ma7"]
 albedo_color = Color(1, 0, 1, 1)
@@ -372,6 +374,9 @@ position = Vector2(0.860748, -0.681183)
 scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_ruuhv")
 
+[node name="FishHit" type="AudioStreamPlayer2D" parent="Hazards/GuardPath/GuardFollow"]
+stream = ExtResource("7_3b11w")
+
 [node name="Chase" type="CharacterBody2D" parent="Hazards"]
 position = Vector2(762.743, 355.103)
 script = ExtResource("5_ruuhv")
@@ -395,6 +400,9 @@ region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Hazards/Chase"]
+
+[node name="FishNoise" type="AudioStreamPlayer2D" parent="Hazards/Chase"]
+stream = ExtResource("7_3b11w")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Hazards"]
 position = Vector2(1539.43, 145.042)
@@ -824,6 +832,9 @@ texture = ExtResource("9_qlsg3")
 visible = false
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="RadarPing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_eg7wb")
 
 [connection signal="body_entered" from="RetreatLocation" to="Hazards/Chase" method="_on_retreat_location_body_entered"]
 [connection signal="body_entered" from="oceanLayout/PictureOfAtlantis" to="." method="_on_treasure_body_entered"]

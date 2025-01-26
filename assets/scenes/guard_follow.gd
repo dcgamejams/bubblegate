@@ -7,3 +7,4 @@ func _process(delta):
 func _on_guard_detect_body_entered(body: Node2D) -> void:
 	if(body ==$"../../../Submarine"):
 		Hub.take_damage.emit(30)
+		$FishHit.play()
