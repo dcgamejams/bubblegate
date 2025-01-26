@@ -4,8 +4,11 @@ var interact_timer := Timer.new()
 
 var is_map_visible = false
 
+@export var sub_camera: Camera2D
+
 func _ready():
 	hide()
+	pass
 
 func map_hide():
 	if Hub.interact_timer.is_stopped():
@@ -95,3 +98,11 @@ func _on_atlantis_door_prompt_2_body_entered(body: Node2D) -> void:
 		#else ask them to try again
 		Hub.show_new_text($Terminal.text)
 		pass # Replace with function body.
+
+
+func _on_guard_detect_body_entered(body: Node2D) -> void:
+	if body.has_method('_on_increase_speed') == false: 
+		return
+	if body.is_sub:
+		Hub.take_damage.emit(22)
+	pass # Replace with function body.

@@ -17,6 +17,7 @@ var is_sub = true
 func _ready():
 	Hub.increase_speed.connect(_on_increase_speed)
 	Hub.decrease_speed.connect(_on_decrease_speed)
+	Hub.SubmarinePlayer = self
 
 func get_input():
 	var input = Vector2()
@@ -42,7 +43,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_increase_speed():
-	if speed_current_index + 1 <= 4:
+	if speed_current_index + 1 <= 3:
 		speed_current_index = speed_current_index + 1
 		speed = speed_array[speed_current_index]
 

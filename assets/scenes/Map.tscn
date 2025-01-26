@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://bmhk3w0iy3dbu"]
+[gd_scene load_steps=36 format=3 uid="uid://ck6d7iov3vhse"]
 
 [ext_resource type="Script" uid="uid://2v286l2io7xd" path="res://assets/scripts/MapChracter.gd" id="1_c6ma7"]
 [ext_resource type="Script" uid="uid://0hd4flk2lwjj" path="res://assets/scripts/Map.gd" id="1_k2r0d"]
+[ext_resource type="Texture2D" uid="uid://be1kw8birvhsw" path="res://assets/textures/sub.png" id="3_2pa8y"]
 [ext_resource type="Script" uid="uid://dwtwstknmtcb4" path="res://assets/scenes/guard_follow.gd" id="3_3kb6w"]
-[ext_resource type="Texture2D" uid="uid://c7lwlaeh2oavi" path="res://icon.svg" id="3_4x54j"]
+[ext_resource type="Texture2D" uid="uid://b5h0kh1x08t1w" path="res://assets/art/textures/anglerfish-w-yeti-crab-worm/fish-angler-Sheet.png" id="5_1nh2a"]
 [ext_resource type="Script" uid="uid://c82oqlwi1bnle" path="res://assets/scenes/enemy.gd" id="5_ruuhv"]
 [ext_resource type="Texture2D" uid="uid://d1igkw5dp8rud" path="res://assets/art/textures/water 3.png" id="6_i5vml"]
 [ext_resource type="Texture2D" uid="uid://e8l6sqpluebo" path="res://assets/art/textures/rock wall tileset.png" id="6_trfwn"]
@@ -18,7 +19,9 @@ material = SubResource("StandardMaterial3D_c6ma7")
 radius = 5.5
 height = 20.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_k2r0d"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2pa8y"]
+radius = 6.0
+height = 21.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6ma7"]
 size = Vector2(2000, 29)
@@ -84,9 +87,10 @@ _data = {
 point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ruuhv"]
+size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srbkf"]
-size = Vector2(207.116, 150.044)
+size = Vector2(78.6642, 76.0221)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_trfwn"]
 
@@ -95,18 +99,32 @@ vertices = PackedVector2Array(-1433.27, 648.148, -1355.04, 718.281, -1267.86, 83
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(12, 13, 9), PackedInt32Array(14, 1, 0, 15), PackedInt32Array(16, 12, 11, 17, 18), PackedInt32Array(19, 20, 21, 22), PackedInt32Array(19, 22, 16, 23), PackedInt32Array(8, 24, 25, 26, 27, 14, 15), PackedInt32Array(8, 7, 24), PackedInt32Array(18, 28, 29, 30, 16), PackedInt32Array(18, 17, 31, 32, 14, 27), PackedInt32Array(30, 23, 16)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0.99585, 7.00204, 33.8555, 405.118, -382.367, 529.154, -377.388, 604.176, 23.8979, 484.141, 28.8767, 844.246, -542.683, 853.248, -460.036, 611.178, -602.428, 850.247, -1125.2, 848.247, -1321.36, 674.196, -1343.26, 717.209, -1247.67, 842.245, -1769.44, 843.245, -1780.4, 531.154, -1434.87, 637.185, -1384.09, 603.175, -1778.41, 423.123, -1789.36, 153.045, -1555.36, 274.08, -1387.08, 195.057, -1241.7, 3.00087, -817.509, 0, -826.471, 108.031, -742.828, 108.031, -707.977, 6.00175, -403.278, 12.0035, -323.618, 193.056, -271.839, 290.084, -164.298, 256.074, -219.065, 26.0076)])
 
-[node name="Map" type="Node2D"]
+[node name="Map" type="Node2D" node_paths=PackedStringArray("sub_camera")]
 script = ExtResource("1_k2r0d")
+sub_camera = NodePath("Submarine/SubCamera")
 
 [node name="Submarine" type="CharacterBody2D" parent="."]
 position = Vector2(67, 92)
 script = ExtResource("1_c6ma7")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Submarine"]
+rotation = 1.5708
 mesh = SubResource("CapsuleMesh_k2r0d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Submarine"]
-shape = SubResource("CircleShape2D_k2r0d")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2pa8y")
+
+[node name="SubCamera" type="Camera2D" parent="Submarine"]
+position = Vector2(1, 0)
+scale = Vector2(1e-05, 1e-05)
+enabled = false
+zoom = Vector2(4.5, 4.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Submarine"]
+visible = false
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_2pa8y")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -325,9 +343,12 @@ rotation = -0.927295
 scale = Vector2(0.99965, 1.0069)
 script = ExtResource("3_3kb6w")
 
-[node name="TestSprite" type="Sprite2D" parent="Hazards/GuardPath/GuardFollow"]
+[node name="FishSprite" type="Sprite2D" parent="Hazards/GuardPath/GuardFollow"]
 rotation = 0.927295
-texture = ExtResource("3_4x54j")
+scale = Vector2(3, 3)
+texture = ExtResource("5_1nh2a")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
 
 [node name="GuardDetect" type="Area2D" parent="Hazards/GuardPath/GuardFollow"]
 rotation = 0.927295
@@ -344,19 +365,21 @@ script = ExtResource("5_ruuhv")
 [node name="ChaseHBox" type="Area2D" parent="Hazards/Chase"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Chase/ChaseHBox"]
-position = Vector2(14.9362, 1.00032)
+position = Vector2(0.49826, 3.00107)
 scale = Vector2(0.999999, 1)
 shape = SubResource("RectangleShape2D_srbkf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Chase"]
 shape = SubResource("CircleShape2D_trfwn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hazards/Chase"]
-position = Vector2(0.995748, 3.05265e-05)
-texture = ExtResource("3_4x54j")
+[node name="FishSprite" type="Sprite2D" parent="Hazards/Chase"]
+rotation = -0.364774
+scale = Vector2(-3, 3)
+texture = ExtResource("5_1nh2a")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Hazards/Chase"]
-debug_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Hazards"]
 position = Vector2(1539.43, 145.042)
