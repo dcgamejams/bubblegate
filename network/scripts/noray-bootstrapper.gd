@@ -188,3 +188,7 @@ func _handle_connect(address: String, port: int) -> Error:
 		print("Handshake to %s:%s concluded" % [address, port])
 
 	return err
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+	pass # Replace with function body.

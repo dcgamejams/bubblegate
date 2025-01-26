@@ -104,3 +104,8 @@ func _parse_input() -> Dictionary:
 		"address": address,
 		"port": port
 	}
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+	pass # Replace with function body.

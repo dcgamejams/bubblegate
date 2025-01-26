@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://cd3015ygqxahn" path="res://assets/art/textures/pillar_01_withshadow.png" id="12_dyyi6"]
 [ext_resource type="Texture2D" uid="uid://cphqtn1mdbi2t" path="res://assets/art/textures/Rune_Leo.png" id="13_3b11w"]
 [ext_resource type="Texture2D" uid="uid://ogd3tqqk23c" path="res://assets/art/textures/Stone_Floor.png" id="14_eg7wb"]
-[ext_resource type="Texture2D" uid="uid://c6x16pn787lbv" path="res://assets/art/textures/stone_circle.png" id="15_ysbog"]
 [ext_resource type="Texture2D" uid="uid://cc1mhrs5qs1dt" path="res://assets/art/textures/smallrockround_640.png" id="16_jpge2"]
 [ext_resource type="Texture2D" uid="uid://dilmjg31qjw8r" path="res://assets/art/textures/ironGate.jpg" id="17_4sn2y"]
 
@@ -32,6 +31,9 @@ height = 21.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6ma7"]
 size = Vector2(2000, 29)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_onnkf"]
+radius = 30.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k2r0d"]
 size = Vector2(68, 923)
@@ -149,14 +151,14 @@ shape = SubResource("RectangleShape2D_c6ma7")
 position = Vector2(834, -10.5)
 shape = SubResource("RectangleShape2D_c6ma7")
 
-[node name="Terminal" type="Label" parent="."]
-visible = false
-offset_left = 211.0
-offset_top = 753.0
-offset_right = 614.0
-offset_bottom = 863.0
-theme_override_font_sizes/font_size = 80
-text = "Test text"
+[node name="RetreatLocation" type="Area2D" parent="."]
+position = Vector2(1132, 132)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RetreatLocation"]
+shape = SubResource("CircleShape2D_onnkf")
+
+[node name="RetreatMarkerForEnemy" type="Marker2D" parent="."]
+position = Vector2(1132, 132)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(-193, 907)
@@ -175,10 +177,10 @@ shape = SubResource("RectangleShape2D_k2r0d")
 [node name="oceanLayout" type="Node2D" parent="."]
 
 [node name="PictureOfAtlantis" type="Area2D" parent="oceanLayout"]
-position = Vector2(1, -2)
+position = Vector2(1, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/PictureOfAtlantis"]
-position = Vector2(214, 251)
+position = Vector2(214, 259)
 shape = SubResource("CircleShape2D_c6ma7")
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="oceanLayout"]
@@ -393,7 +395,6 @@ region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Hazards/Chase"]
-debug_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Hazards"]
 position = Vector2(1539.43, 145.042)
@@ -757,11 +758,6 @@ position = Vector2(713, 63)
 scale = Vector2(0.34375, 0.398438)
 texture = ExtResource("13_3b11w")
 
-[node name="RockCircleAtStart" type="Sprite2D" parent="MapBackground"]
-position = Vector2(218, 244)
-scale = Vector2(0.210069, 0.199653)
-texture = ExtResource("15_ysbog")
-
 [node name="RockAtStart" type="Sprite2D" parent="MapBackground"]
 z_index = -1
 position = Vector2(213, 254)
@@ -824,6 +820,12 @@ position = Vector2(835, 456)
 scale = Vector2(2.95838, 2.62656)
 texture = ExtResource("9_qlsg3")
 
+[node name="Terminal" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_entered" from="RetreatLocation" to="Hazards/Chase" method="_on_retreat_location_body_entered"]
 [connection signal="body_entered" from="oceanLayout/PictureOfAtlantis" to="." method="_on_treasure_body_entered"]
 [connection signal="body_entered" from="oceanLayout/PictureOfAtlantis" to="Hazards/Chase" method="_on_picture_of_atlantis_body_entered"]
 [connection signal="input_event" from="oceanLayout/AtlantisDoor" to="." method="_on_atlantis_door_input_event"]

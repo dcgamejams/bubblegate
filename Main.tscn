@@ -51,7 +51,9 @@ shape = SubResource("CapsuleShape3D_wkp8b")
 
 [node name="SoundContainer" type="Node3D" parent="."]
 
-[node name="Sound1" type="AudioStreamPlayer3D" parent="SoundContainer"]
+[node name="Clank" type="AudioStreamPlayer3D" parent="SoundContainer"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="SoundContainer"]
 
 [node name="StoveClick" type="AudioStreamPlayer3D" parent="SoundContainer"]
 stream = ExtResource("8_20pc6")
