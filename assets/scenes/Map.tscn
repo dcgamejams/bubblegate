@@ -106,9 +106,10 @@ vertices = PackedVector2Array(-1433.26, 648.148, -1355.03, 718.281, -1267.86, 83
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(12, 13, 9), PackedInt32Array(14, 1, 0, 15), PackedInt32Array(16, 12, 11, 17, 18), PackedInt32Array(19, 20, 21, 22), PackedInt32Array(19, 22, 16, 23), PackedInt32Array(8, 24, 25, 26, 27, 14, 15), PackedInt32Array(28, 29, 30, 31), PackedInt32Array(18, 32, 33, 34, 16), PackedInt32Array(8, 7, 28, 31), PackedInt32Array(8, 31, 24), PackedInt32Array(18, 17, 35, 36, 14, 27), PackedInt32Array(34, 23, 16)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0.99585, 7.00204, 33.8555, 405.118, -382.367, 529.154, -377.388, 604.176, 23.8979, 484.141, 28.8767, 844.246, -542.683, 853.248, -460.036, 611.178, -602.428, 850.247, -1125.2, 848.247, -1321.36, 674.196, -1343.26, 717.209, -1247.67, 842.245, -1769.44, 843.245, -1780.4, 531.154, -1434.87, 637.185, -1384.09, 603.175, -1778.41, 423.123, -1789.36, 153.045, -1554.37, 275.08, -1391.06, 178.052, -1241.7, 3.00087, -817.509, 0, -826.471, 108.031, -742.828, 108.031, -707.977, 6.00175, -403.278, 12.0035, -323.618, 193.056, -271.839, 290.084, -164.298, 256.074, -219.065, 26.0076), PackedVector2Array(-1555.36, 277.081, -1594.2, 219.064, -1484.66, 152.044, -1383.1, 185.054)])
 
-[node name="Map" type="Node2D" node_paths=PackedStringArray("sub_camera")]
+[node name="Map" type="Node2D" node_paths=PackedStringArray("sub_camera", "sub_player")]
 script = ExtResource("1_k2r0d")
 sub_camera = NodePath("Submarine/SubCamera")
+sub_player = NodePath("Submarine")
 
 [node name="Submarine" type="CharacterBody2D" parent="."]
 position = Vector2(67, 92)

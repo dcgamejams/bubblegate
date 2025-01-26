@@ -10,6 +10,7 @@ signal take_damage
 var environment_container: Node3D
 var players_container: Node3D
 var sound_container: Node3D
+var power_label: Label3D
 
 var Map: Node2D
 var Sub: Node3D
@@ -65,7 +66,7 @@ func _on_take_damage(damage):
 	else:
 		hull_health = 0
 		HullMonitor.bar.value = hull_health
-		speed = 0
+		SubmarinePlayer.speed = 0
 		show_new_text('CRITICAL DAMAGE GAME OVER')
 
 func show_new_text(_new_text): 

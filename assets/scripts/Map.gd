@@ -5,6 +5,7 @@ var interact_timer := Timer.new()
 var is_map_visible = false
 
 @export var sub_camera: Camera2D
+@export var sub_player: CharacterBody2D
 
 func _ready():
 	hide()
