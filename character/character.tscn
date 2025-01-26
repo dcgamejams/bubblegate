@@ -423,6 +423,9 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/InteractArea"]
 shape = SubResource("BoxShape3D_hx151")
 
+[node name="AudioListener3D" type="AudioListener3D" parent="Head"]
+current = true
+
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
