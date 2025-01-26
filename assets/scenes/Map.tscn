@@ -115,6 +115,7 @@ position = Vector2(67, 92)
 script = ExtResource("1_c6ma7")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Submarine"]
+visible = false
 rotation = 1.5708
 mesh = SubResource("CapsuleMesh_k2r0d")
 
