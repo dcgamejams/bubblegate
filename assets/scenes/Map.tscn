@@ -21,7 +21,8 @@ radius = 5.5
 height = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2pa8y"]
-height = 35.0
+radius = 6.0
+height = 21.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6ma7"]
 size = Vector2(2000, 29)
@@ -108,6 +109,7 @@ position = Vector2(67, 92)
 script = ExtResource("1_c6ma7")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Submarine"]
+rotation = 1.5708
 mesh = SubResource("CapsuleMesh_k2r0d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Submarine"]
@@ -118,9 +120,10 @@ shape = SubResource("CapsuleShape2D_2pa8y")
 position = Vector2(1, 0)
 scale = Vector2(1e-05, 1e-05)
 enabled = false
-zoom = Vector2(3, 3)
+zoom = Vector2(4.5, 4.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="Submarine"]
+visible = false
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_2pa8y")
 
