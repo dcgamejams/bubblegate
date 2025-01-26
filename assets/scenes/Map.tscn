@@ -1,10 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://ck6d7iov3vhse"]
+[gd_scene load_steps=36 format=3 uid="uid://ck6d7iov3vhse"]
 
 [ext_resource type="Script" uid="uid://2v286l2io7xd" path="res://assets/scripts/MapChracter.gd" id="1_c6ma7"]
 [ext_resource type="Script" uid="uid://0hd4flk2lwjj" path="res://assets/scripts/Map.gd" id="1_k2r0d"]
 [ext_resource type="Texture2D" uid="uid://be1kw8birvhsw" path="res://assets/textures/sub.png" id="3_2pa8y"]
 [ext_resource type="Script" uid="uid://dwtwstknmtcb4" path="res://assets/scenes/guard_follow.gd" id="3_3kb6w"]
-[ext_resource type="Texture2D" uid="uid://c7lwlaeh2oavi" path="res://icon.svg" id="3_4x54j"]
 [ext_resource type="Texture2D" uid="uid://b5h0kh1x08t1w" path="res://assets/art/textures/anglerfish-w-yeti-crab-worm/fish-angler-Sheet.png" id="5_1nh2a"]
 [ext_resource type="Script" uid="uid://c82oqlwi1bnle" path="res://assets/scenes/enemy.gd" id="5_ruuhv"]
 [ext_resource type="Texture2D" uid="uid://d1igkw5dp8rud" path="res://assets/art/textures/water 3.png" id="6_i5vml"]
@@ -91,7 +90,7 @@ point_count = 5
 size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srbkf"]
-size = Vector2(207.116, 150.044)
+size = Vector2(78.6642, 76.0221)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_trfwn"]
 
@@ -344,7 +343,7 @@ rotation = -0.927295
 scale = Vector2(0.99965, 1.0069)
 script = ExtResource("3_3kb6w")
 
-[node name="TestSprite" type="Sprite2D" parent="Hazards/GuardPath/GuardFollow"]
+[node name="FishSprite" type="Sprite2D" parent="Hazards/GuardPath/GuardFollow"]
 rotation = 0.927295
 scale = Vector2(3, 3)
 texture = ExtResource("5_1nh2a")
@@ -366,38 +365,25 @@ script = ExtResource("5_ruuhv")
 [node name="ChaseHBox" type="Area2D" parent="Hazards/Chase"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Chase/ChaseHBox"]
-position = Vector2(14.9362, 1.00032)
+position = Vector2(0.49826, 3.00107)
 scale = Vector2(0.999999, 1)
 shape = SubResource("RectangleShape2D_srbkf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Chase"]
 shape = SubResource("CircleShape2D_trfwn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hazards/Chase/CollisionShape2D"]
-visible = false
-position = Vector2(0.000121551, -1.00026)
-scale = Vector2(0.995748, 1.00029)
-texture = ExtResource("3_4x54j")
-
-[node name="TestSprite" type="Sprite2D" parent="Hazards/Chase/CollisionShape2D"]
-rotation = 0.927295
-scale = Vector2(3, 3)
+[node name="FishSprite" type="Sprite2D" parent="Hazards/Chase"]
+rotation = -0.364774
+scale = Vector2(-3, 3)
 texture = ExtResource("5_1nh2a")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
-
-[node name="Sprite2D" type="Sprite2D" parent="Hazards/Chase"]
-position = Vector2(0.995748, 3.05265e-05)
-texture = ExtResource("3_4x54j")
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Hazards/Chase"]
-debug_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Hazards"]
 position = Vector2(1539.43, 145.042)
 navigation_polygon = SubResource("NavigationPolygon_trfwn")
-
 
 [node name="MapBackground" type="Node2D" parent="."]
 
