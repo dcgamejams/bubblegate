@@ -74,7 +74,6 @@ theme_override_constants/side_margin = 5
 theme_override_fonts/font = ExtResource("2_ugjv2")
 theme_override_styles/panel = SubResource("StyleBoxFlat_o1xex")
 current_tab = 0
-tabs_visible = false
 
 [node name="LAN" type="VBoxContainer" parent="Network Popup"]
 layout_mode = 2
@@ -237,7 +236,7 @@ offset_left = -297.0
 offset_right = 297.0
 offset_bottom = 133.0
 grow_horizontal = 2
-theme_override_constants/margin_top = 200
+theme_override_constants/margin_top = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
 layout_mode = 2

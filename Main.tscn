@@ -25,10 +25,10 @@ transform = Transform3D(-4.80827e-08, 0, -1.1, 0, 1.1, 0, 1.1, 0, -4.80827e-08, 
 [node name="Map" parent="EnvironmentContainer" instance=ExtResource("3_3dxm6")]
 
 [node name="HullMonitor" parent="EnvironmentContainer" instance=ExtResource("5_trn2v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.395332, 0.451346, 0, -0.451346, 0.395332, -1.1376, -1.72787, -7.14987)
+transform = Transform3D(0.6, 0, 0, 0, 0.395332, 0.451346, 0, -0.451346, 0.395332, -1.1714, -1.67021, -7.20845)
 
 [node name="Terminal3dEmbed" parent="EnvironmentContainer" instance=ExtResource("6_03owx")]
-transform = Transform3D(-1.08431e-08, -0.18744, 0.307354, -8.16907e-09, 0.307354, 0.18744, -0.36, -1.32878e-09, -1.35108e-08, -2.89556, -1.58449, -2.94104)
+transform = Transform3D(-1.08431e-08, -0.18744, 0.307354, -8.16907e-09, 0.307354, 0.18744, -0.36, -1.32878e-09, -1.35108e-08, -2.90238, -1.58449, -2.94104)
 
 [node name="SoundContainer" type="Node3D" parent="."]
 
