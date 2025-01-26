@@ -55,7 +55,7 @@ var steer_direction  # Current direction of steering
 @export var is_active = true
 
 func _physics_process(delta: float) -> void:
-	if is_active:
+	if $SubCamera.enabled:
 		acceleration = Vector2.ZERO
 		get_input()  # Take input from player
 		calculate_steering(delta)  # Apply turning logic based on steering
@@ -64,7 +64,6 @@ func _physics_process(delta: float) -> void:
 	apply_friction(delta)  # Apply friction forces to the car
 	move_and_slide()  # Move the car and handle collisions
 	
-
 #function to handle input from the user and apply effects to the car's movement
 func get_input():
 	# Get steering input and translate it to an angle

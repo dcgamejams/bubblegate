@@ -48,7 +48,9 @@ shape = SubResource("CapsuleShape3D_wkp8b")
 
 [node name="SoundContainer" type="Node3D" parent="."]
 
-[node name="Sound1" type="AudioStreamPlayer3D" parent="SoundContainer"]
+[node name="Clank" type="AudioStreamPlayer3D" parent="SoundContainer"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="SoundContainer"]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://cc1m2a1obsyn4")
