@@ -80,8 +80,8 @@ a = Vector2(-0.599991, -1)
 b = Vector2(10.4, 9.00001)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_0r2rp"]
-a = Vector2(-7.4, -2.00001)
-b = Vector2(3.39999, 7.99999)
+a = Vector2(-8.2, -1.2)
+b = Vector2(2.8, 8.8)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_dyyi6"]
 b = Vector2(12.4, 10.6)
