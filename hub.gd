@@ -59,7 +59,6 @@ func _on_repair(health):
 	if hull_health + health <= 100:
 		hull_health = hull_health + health
 		HullMonitor.bar.value = hull_health
-		
 	else:
 		hull_health = 100
 		HullMonitor.bar.value = hull_health
@@ -69,11 +68,9 @@ func _on_take_damage(damage):
 	if hull_health - damage > 0:
 		hull_health = hull_health - damage
 		HullMonitor.bar.value = hull_health
-		
 	else:
 		hull_health = 0
 		HullMonitor.bar.value = hull_health
-		SubmarinePlayer.speed = 0
 		show_new_text('CRITICAL DAMAGE GAME OVER')
 
 func show_new_text(_new_text): 

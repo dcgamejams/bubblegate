@@ -96,35 +96,20 @@ func _on_atlantis_door_prompt_body_entered(body: CharacterBody2D) -> void:
 		$Terminal.text += '\nhundreds of weird shapes and symbols greet you. ' 
 		$Terminal.text += '\nIt looks like you could push the stones without damaging '
 		$Terminal.text += '\nyou sub. But, which ones?'
-		#if correct runes 
-		#get rid of wall
-		#else ask them to try again
-		var finish = true
-		for i in range(4):
-			if(runes[i] == false):
-				finish = false
-		if finish == true:
-			$Terminal.text = "You win the videogame"
-		$RadarPing.play()
-		pass # Replace with function body.
-
-
-func _on_atlantis_door_prompt_2_body_entered(body: Node2D) -> void:
-	if body.is_sub: 	
-		$Terminal.text = 'You come across a metal door. In the center of the door '
-		$Terminal.text += '\nhundreds of weird shapes and symbols greet you. ' 
-		$Terminal.text += '\nIt looks like you could push the stones without damaging '
-		$Terminal.text += '\nyou sub. But, which ones?'
-		#if correct runes 
-		#get rid of wall
-		#else ask them to try again
-		var finish = true
-		for i in range(4):
-			if(runes[i] == false):
-				finish = false
-		if finish == true:
-			$Terminal.text = "You win the videogame"
 		Hub.show_new_text($Terminal.text)
+
+		#if correct runes 
+		#get rid of wall
+		#else ask them to try again
+		var finish = true
+		for i in range(4):
+			if(runes[i] == false):
+				finish = false
+		if finish == true:
+			$Terminal.text = "You win the videogame"
+			Hub.show_new_text($Terminal.text)
+
+		$RadarPing.play()
 		pass # Replace with function body.
 
 
@@ -134,3 +119,25 @@ func _on_guard_detect_body_entered(body: Node2D) -> void:
 	if body.is_sub:
 		Hub.take_damage.emit(22)
 	pass # Replace with function body.
+
+
+func _on_atlantis_door_interact_area_body_entered(body: Node2D) -> void:
+	if body.has_method('decrease_speed'):
+		if body.is_sub: 	
+			$Terminal.text = 'You come across a metal door. In the center of the door '
+			$Terminal.text += '\nhundreds of weird shapes and symbols greet you. ' 
+			$Terminal.text += '\nIt looks like you could push the stones without damaging '
+			$Terminal.text += '\nyou sub. But, which ones?'
+			Hub.show_new_text($Terminal.text)
+
+			#if correct runes 
+			#get rid of wall
+			#else ask them to try again
+			var finish = true
+			for i in range(4):
+				if(runes[i] == false):
+					finish = false
+			if finish == true:
+				$Terminal.text = "You win the videogame"
+			Hub.show_new_text($Terminal.text)
+			pass # Replace with function body.
