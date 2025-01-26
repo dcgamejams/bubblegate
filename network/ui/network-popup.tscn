@@ -250,9 +250,9 @@ text = "Bubble Gate"
 
 [connection signal="pressed" from="Network Popup/LAN/Actions Row/Host Button" to="Network Popup/LAN Bootstrapper" method="host"]
 [connection signal="pressed" from="Network Popup/LAN/Actions Row/Join Button" to="Network Popup/LAN Bootstrapper" method="join"]
-[connection signal="pressed" from="Network Popup/LAN/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Network Popup/LAN/Quit" to="Network Popup/LAN Bootstrapper" method="_on_quit_pressed"]
 [connection signal="pressed" from="Network Popup/Noray/Noray Actions Row/Disconnect Button" to="Network Popup/Noray Bootstrapper" method="disconnect_from_noray"]
 [connection signal="pressed" from="Network Popup/Noray/Noray Actions Row/Connect Button" to="Network Popup/Noray Bootstrapper" method="connect_to_noray"]
 [connection signal="pressed" from="Network Popup/Noray/Connect Actions Row/Host Button" to="Network Popup/Noray Bootstrapper" method="host"]
 [connection signal="pressed" from="Network Popup/Noray/Connect Actions Row/Join Button" to="Network Popup/Noray Bootstrapper" method="join"]
-[connection signal="pressed" from="Network Popup/Noray/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Network Popup/Noray/Quit" to="Network Popup/Noray Bootstrapper" method="_on_quit_pressed"]
