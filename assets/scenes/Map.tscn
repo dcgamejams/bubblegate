@@ -420,6 +420,7 @@ uv = PackedVector2Array(0, 0, 0, 96, 96, 96, 96, 0)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
 
 [node name="WaterBackground" type="Sprite2D" parent="MapBackground"]
+visible = false
 z_index = -6
 position = Vector2(800, 450)
 scale = Vector2(4.34277, 2.30469)
@@ -741,6 +742,7 @@ scale = Vector2(2, 1.325)
 texture = ExtResource("12_dyyi6")
 
 [node name="RockFloor" type="Polygon2D" parent="MapBackground"]
+visible = false
 z_index = -2
 position = Vector2(-0.749998, 712)
 scale = Vector2(0.212402, 0.359375)
@@ -817,6 +819,7 @@ uv = PackedVector2Array(0, 0, 0, 1024, 1024, 1024, 1024, 0)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
 
 [node name="BlueBackground" type="Sprite2D" parent="MapBackground"]
+visible = false
 z_index = -20
 position = Vector2(835.25, 456.25)
 scale = Vector2(2.95838, 2.62656)
