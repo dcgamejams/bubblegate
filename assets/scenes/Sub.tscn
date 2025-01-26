@@ -125,7 +125,7 @@ shadow_mesh = SubResource("ArrayMesh_e02u7")
 [sub_resource type="Environment" id="Environment_vkwla"]
 tonemap_mode = 3
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.0676
+volumetric_fog_density = 0.1126
 volumetric_fog_gi_inject = 1.06
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lusj7"]
@@ -241,7 +241,8 @@ surface_material_override/3 = ExtResource("8_7gjum")
 script = ExtResource("8_pjlvp")
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.182544, 6.6659)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.773433, 0.495081)
+visible = false
 light_color = Color(1, 0.643137, 0.235294, 1)
 light_energy = 2.306
 light_indirect_energy = 1.14
@@ -249,12 +250,27 @@ light_volumetric_fog_energy = 1.218
 omni_range = 12.055
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.354768, -1.71563)
-light_color = Color(1, 0.643137, 0.235294, 1)
-light_energy = 2.306
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60891, -2.88451)
+light_color = Color(0.459493, 0.564794, 0.826788, 1)
+light_energy = 1.87
+light_indirect_energy = 4.385
+omni_range = 29.057
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15119, 3.78441)
+light_color = Color(0.459493, 0.564794, 0.826788, 1)
+light_energy = 1.075
 light_indirect_energy = 1.14
-light_volumetric_fog_energy = 1.218
-omni_range = 12.055
+light_volumetric_fog_energy = 2.588
+omni_range = 29.057
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15119, 0.936099)
+light_color = Color(0.459493, 0.564794, 0.826788, 1)
+light_energy = 1.075
+light_indirect_energy = 1.14
+light_volumetric_fog_energy = 2.588
+omni_range = 29.057
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vkwla")
@@ -269,11 +285,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84217, -2.93419, 4.68477)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84217, -2.93419, -5.56824)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.00464251, 0.999989, 0, -0.999989, -0.00464251, -2.62848, 0.80825, -3.43163)
-light_color = Color(0.99, 0.495, 0, 1)
+transform = Transform3D(1, 0, 0, 0, -0.00464251, 0.999989, 0, -0.999989, -0.00464251, -3.44205, 1.31048, -2.25657)
+light_color = Color(1, 0.797562, 0.674501, 1)
 light_energy = 3.909
 light_indirect_energy = 4.232
-light_volumetric_fog_energy = 3.263
+light_volumetric_fog_energy = 2.186
+light_size = 0.091
+light_specular = 0.177
+spot_range = 4096.0
+spot_attenuation = 2.0
+spot_angle = 61.86
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00464251, 0.999989, 0, -0.999989, -0.00464251, 3.10478, 1.31048, -1.72599)
+light_color = Color(1, 0.797562, 0.674501, 1)
+light_energy = 3.909
+light_indirect_energy = 4.232
+light_volumetric_fog_energy = 2.186
 light_size = 0.091
 light_specular = 0.177
 spot_range = 4096.0
@@ -281,11 +309,11 @@ spot_attenuation = 2.0
 spot_angle = 61.86
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.00464251, 0.999989, 0, -0.999989, -0.00464251, 1.39566, 0.80825, -7.38518)
-light_color = Color(0.99, 0.495, 0, 1)
+transform = Transform3D(1, 0, 0, 0, -0.00464251, 0.999989, 0, -0.999989, -0.00464251, -0.129519, 1.42777, -7.60866)
+light_color = Color(1, 0.8035, 0.684231, 1)
 light_energy = 3.909
 light_indirect_energy = 4.232
-light_volumetric_fog_energy = 3.263
+light_volumetric_fog_energy = 2.109
 light_size = 0.091
 light_specular = 0.177
 spot_range = 4096.0
@@ -377,7 +405,5 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map"]
 shape = SubResource("BoxShape3D_5ujj3")
-
-[node name="LightmapGI" type="LightmapGI" parent="."]
 
 [editable path="Console/terminal"]
