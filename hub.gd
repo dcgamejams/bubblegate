@@ -9,6 +9,7 @@ signal take_damage
 
 var environment_container: Node3D
 var players_container: Node3D
+var sound_container: Node3D
 
 var Map: Node2D
 var Sub: Node3D
@@ -47,7 +48,6 @@ func interact(interact_event):
 		"PowerUp":
 			increase_speed.emit()
 
-
 func _on_take_damage(damage): 
 	if hull_health - damage > 0:
 		hull_health = hull_health - damage
@@ -61,5 +61,9 @@ func _on_take_damage(damage):
 func show_new_text(_new_text): 
 	Terminal.label.text = _new_text
 
-
-	
+func play_sound(_name):
+	var found_sound: AudioStreamPlayer3D
+	for sound in sound_container.get_children():
+		if sound.name == _name:
+			found_sound = sound
+			found_sound.play()

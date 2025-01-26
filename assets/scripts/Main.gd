@@ -6,3 +6,4 @@ func _ready() -> void:
 	Hub.Sub = $EnvironmentContainer/Sub
 	Hub.HullMonitor = $EnvironmentContainer/HullMonitor
 	Hub.Terminal = $EnvironmentContainer/Terminal3dEmbed
+	Hub.sound_container = $SoundContainer

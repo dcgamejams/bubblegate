@@ -5,10 +5,10 @@ var points=[]
 var sonar_radius=0.0
 signal register_with_sonar(xy, radius)
 
-func _register_with_sonar_callback(origin: Vector2, scale: float):
+func _register_with_sonar_callback(origin: Vector2, _scale: float):
 	var xy=Vector3(origin.x,
 				origin.y, 
-				scale)
+				_scale)
 	var xy2=Vector3(transform.origin.x,
 				transform.origin.y,
 				(transform.basis*Vector3.FORWARD).length())
