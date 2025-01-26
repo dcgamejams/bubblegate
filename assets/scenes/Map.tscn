@@ -1,8 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://ck6d7iov3vhse"]
+[gd_scene load_steps=43 format=3 uid="uid://ck6d7iov3vhse"]
 
 [ext_resource type="Script" uid="uid://2v286l2io7xd" path="res://assets/scripts/MapChracter.gd" id="1_c6ma7"]
 [ext_resource type="Script" uid="uid://0hd4flk2lwjj" path="res://assets/scripts/Map.gd" id="1_k2r0d"]
-[ext_resource type="Texture2D" uid="uid://be1kw8birvhsw" path="res://assets/textures/sub.png" id="3_2pa8y"]
+[ext_resource type="Texture2D" uid="uid://c8rn58fjcchlb" path="res://assets/art/textures/submarinewindowless.png" id="3_2pa8y"]
 [ext_resource type="Script" uid="uid://dwtwstknmtcb4" path="res://assets/scenes/guard_follow.gd" id="3_3kb6w"]
 [ext_resource type="Texture2D" uid="uid://b5h0kh1x08t1w" path="res://assets/art/textures/anglerfish-w-yeti-crab-worm/fish-angler-Sheet.png" id="5_1nh2a"]
 [ext_resource type="Script" uid="uid://c82oqlwi1bnle" path="res://assets/scenes/enemy.gd" id="5_ruuhv"]
@@ -10,6 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://e8l6sqpluebo" path="res://assets/art/textures/rock wall tileset.png" id="6_trfwn"]
 [ext_resource type="Texture2D" uid="uid://bh67806bpy84q" path="res://assets/art/textures/rocks2.png" id="8_qlsg3"]
 [ext_resource type="Texture2D" uid="uid://bda3i472l7th7" path="res://BlueBackground.png" id="9_qlsg3"]
+[ext_resource type="Texture2D" uid="uid://c4meb6tlyfxo1" path="res://assets/art/textures/ship_two.png" id="11_0r2rp"]
+[ext_resource type="Texture2D" uid="uid://cd3015ygqxahn" path="res://assets/art/textures/pillar_01_withshadow.png" id="12_dyyi6"]
+[ext_resource type="Texture2D" uid="uid://cphqtn1mdbi2t" path="res://assets/art/textures/Rune_Leo.png" id="13_3b11w"]
+[ext_resource type="Texture2D" uid="uid://ogd3tqqk23c" path="res://assets/art/textures/Stone_Floor.png" id="14_eg7wb"]
+[ext_resource type="Texture2D" uid="uid://c6x16pn787lbv" path="res://assets/art/textures/stone_circle.png" id="15_ysbog"]
+[ext_resource type="Texture2D" uid="uid://cc1mhrs5qs1dt" path="res://assets/art/textures/smallrockround_640.png" id="16_jpge2"]
+[ext_resource type="Texture2D" uid="uid://dilmjg31qjw8r" path="res://assets/art/textures/ironGate.jpg" id="17_4sn2y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6ma7"]
 albedo_color = Color(1, 0, 1, 1)
@@ -87,10 +94,10 @@ _data = {
 point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ruuhv"]
-size = Vector2(10, 10)
+size = Vector2(8.03052, 7.51222)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srbkf"]
-size = Vector2(78.6642, 76.0221)
+size = Vector2(73.0166, 76.7515)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_trfwn"]
 
@@ -122,9 +129,11 @@ enabled = false
 zoom = Vector2(4.5, 4.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="Submarine"]
-visible = false
-scale = Vector2(0.05, 0.05)
+z_index = 9
+position = Vector2(-0.999997, -5)
+scale = Vector2(0.770313, 0.768359)
 texture = ExtResource("3_2pa8y")
+flip_h = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -326,7 +335,7 @@ shape = SubResource("CircleShape2D_0r2rp")
 [node name="Rune4" type="Area2D" parent="oceanLayout"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="oceanLayout/Rune4"]
-position = Vector2(1656, 73)
+position = Vector2(1659, 73)
 scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_4x54j")
 
@@ -355,6 +364,7 @@ rotation = 0.927295
 scale = Vector2(1, 1.00989)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/GuardPath/GuardFollow/GuardDetect"]
+position = Vector2(0.860748, -0.681183)
 scale = Vector2(10, 10)
 shape = SubResource("RectangleShape2D_ruuhv")
 
@@ -365,8 +375,9 @@ script = ExtResource("5_ruuhv")
 [node name="ChaseHBox" type="Area2D" parent="Hazards/Chase"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Chase/ChaseHBox"]
-position = Vector2(0.49826, 3.00107)
-scale = Vector2(0.999999, 1)
+position = Vector2(-0.534393, 0.351776)
+rotation = 1.31598
+scale = Vector2(0.999998, 1)
 shape = SubResource("RectangleShape2D_srbkf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hazards/Chase"]
@@ -382,6 +393,7 @@ region_rect = Rect2(0, 0, 32, 32)
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Hazards/Chase"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Hazards"]
+visible = false
 position = Vector2(1539.43, 145.042)
 navigation_polygon = SubResource("NavigationPolygon_trfwn")
 
@@ -397,13 +409,13 @@ polygon = PackedVector2Array(-48, -48, -48, 48, 48, 48, 48, -48)
 uv = PackedVector2Array(0, 0, 0, 96, 96, 96, 96, 0)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
 
-[node name="RockWallTop" type="Polygon2D" parent="MapBackground"]
+[node name="RockwallTop" type="Polygon2D" parent="MapBackground"]
 texture_repeat = 2
-position = Vector2(828, -9.5)
-scale = Vector2(20.875, 0.614583)
+position = Vector2(834, -16.9999)
+scale = Vector2(20.862, 0.572917)
 texture = ExtResource("6_trfwn")
-texture_scale = Vector2(30, 1)
-polygon = PackedVector2Array(-48, -48, -48, 48, -38.7057, 48, 48, 48, 48, -48)
+texture_scale = Vector2(40, 1)
+polygon = PackedVector2Array(-48, -48, -48, 48, 48, 48, 48, -48)
 uv = PackedVector2Array(0, 0, 0, 96, 96, 96, 96, 0)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
 
@@ -711,12 +723,98 @@ position = Vector2(1481, 523)
 scale = Vector2(2.70313, 1)
 texture = ExtResource("8_qlsg3")
 
-[node name="Sprite2D" type="Sprite2D" parent="MapBackground"]
+[node name="Rock19" type="Sprite2D" parent="MapBackground"]
 z_index = -1
 position = Vector2(1717, 859)
 rotation = -1.67552
 scale = Vector2(3.125, 3)
 texture = ExtResource("8_qlsg3")
+
+[node name="ShipWreck" type="Sprite2D" parent="MapBackground"]
+position = Vector2(1642, 62.9999)
+rotation = -1.98269
+texture = ExtResource("11_0r2rp")
+
+[node name="Column" type="Sprite2D" parent="MapBackground"]
+position = Vector2(1513, 758)
+scale = Vector2(2, 1.325)
+texture = ExtResource("12_dyyi6")
+
+[node name="RockFloor" type="Polygon2D" parent="MapBackground"]
+z_index = -2
+position = Vector2(-0.749998, 712)
+scale = Vector2(0.212402, 0.359375)
+texture = ExtResource("14_eg7wb")
+polygon = PackedVector2Array(-512, -512, -512, 512, 2503.5, 537.044, 1161.71, -258.783)
+uv = PackedVector2Array(0, 0, 0, 1024, 1024, 1024, 1024, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Rune" type="Sprite2D" parent="MapBackground"]
+z_index = -1
+position = Vector2(713, 63)
+scale = Vector2(0.34375, 0.398438)
+texture = ExtResource("13_3b11w")
+
+[node name="RockCircleAtStart" type="Sprite2D" parent="MapBackground"]
+position = Vector2(218, 244)
+scale = Vector2(0.210069, 0.199653)
+texture = ExtResource("15_ysbog")
+
+[node name="RockAtStart" type="Sprite2D" parent="MapBackground"]
+z_index = -1
+position = Vector2(213, 254)
+scale = Vector2(0.275781, 0.325)
+texture = ExtResource("16_jpge2")
+
+[node name="Rock20" type="Sprite2D" parent="MapBackground"]
+z_index = -2
+position = Vector2(579.35, 37.4)
+rotation = 1.67552
+scale = Vector2(2.30348, 4.03645)
+texture = ExtResource("8_qlsg3")
+
+[node name="Rock21" type="Sprite2D" parent="MapBackground"]
+z_index = -2
+position = Vector2(823, 35)
+rotation = 1.79594
+scale = Vector2(1.84375, 3.21875)
+texture = ExtResource("8_qlsg3")
+
+[node name="Gate1" type="Polygon2D" parent="MapBackground"]
+texture_repeat = 2
+position = Vector2(661.448, 561.605)
+rotation = 0.71733
+scale = Vector2(0.075355, 0.0244146)
+texture = ExtResource("17_4sn2y")
+texture_scale = Vector2(3, 1)
+polygon = PackedVector2Array(-512, -512, -512, 512, 512, 512, 512, -512)
+uv = PackedVector2Array(0, 0, 0, 1024, 1024, 1024, 1024, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+
+[node name="Rock22" type="Sprite2D" parent="MapBackground"]
+z_index = -1
+position = Vector2(1624.85, 13.718)
+rotation = 1.79594
+scale = Vector2(2.10795, 5.30918)
+texture = ExtResource("8_qlsg3")
+
+[node name="Rock23" type="Sprite2D" parent="MapBackground"]
+z_index = -1
+position = Vector2(1736, 117)
+rotation = -2.75238
+scale = Vector2(1.70313, 2.64063)
+texture = ExtResource("8_qlsg3")
+
+[node name="Gate2" type="Polygon2D" parent="MapBackground"]
+texture_repeat = 2
+position = Vector2(804, 396)
+rotation = 0.71733
+scale = Vector2(0.075355, 0.0244146)
+texture = ExtResource("17_4sn2y")
+texture_scale = Vector2(3, 1)
+polygon = PackedVector2Array(-512, -512, -512, 512, 512, 512, 512, -512)
+uv = PackedVector2Array(0, 0, 0, 1024, 1024, 1024, 1024, 0)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
 
 [node name="BlueBackground" type="Sprite2D" parent="MapBackground"]
 z_index = -20
