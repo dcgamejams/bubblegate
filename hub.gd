@@ -34,6 +34,7 @@ func _ready():
 	
 	take_damage.connect(_on_take_damage)
 	
+	
 func interact(interact_event):
 	if Hub.hull_health <= 0:
 		return
