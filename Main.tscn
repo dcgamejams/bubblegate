@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dw2n54o6wfs4t"]
+[gd_scene load_steps=12 format=3 uid="uid://dw2n54o6wfs4t"]
 
 [ext_resource type="Script" uid="uid://chjkqkhsowe7i" path="res://assets/scripts/Main.gd" id="1_lgr22"]
 [ext_resource type="PackedScene" uid="uid://c3ene67v4ctkd" path="res://assets/scenes/Engine.tscn" id="2_fos0i"]
@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://character/character.tscn" id="4_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://bqotgssorourc" path="res://assets/scenes/HullMonitor.tscn" id="5_trn2v"]
 [ext_resource type="PackedScene" uid="uid://dy6s6uhdug50c" path="res://assets/scenes/Terminal3DEmbed.tscn" id="6_03owx"]
+[ext_resource type="PackedScene" uid="uid://545urpc6radw" path="res://assets/art/models/SteampunkPipes.glb" id="7_wkp8b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wkp8b"]
+radius = 0.7
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_lgr22")
@@ -20,15 +24,27 @@ script = ExtResource("1_lgr22")
 [node name="Sub" parent="EnvironmentContainer" instance=ExtResource("2_uu6xs")]
 
 [node name="Engine" parent="EnvironmentContainer" instance=ExtResource("2_fos0i")]
-transform = Transform3D(-4.80827e-08, 0, -1.1, 0, 1.1, 0, 1.1, 0, -4.80827e-08, 2.79793, -2.3141, -1.21178)
+transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, 3.1827, -2.45749, -2.01138)
 
 [node name="Map" parent="EnvironmentContainer" instance=ExtResource("3_3dxm6")]
 
 [node name="HullMonitor" parent="EnvironmentContainer" instance=ExtResource("5_trn2v")]
-transform = Transform3D(0.6, 0, 0, 0, 0.395332, 0.451346, 0, -0.451346, 0.395332, -1.1376, -1.72787, -7.14987)
+transform = Transform3D(0.6, 0, 0, 0, 0.395332, 0.451346, 0, -0.451346, 0.395332, -1.1714, -1.67021, -7.20845)
 
 [node name="Terminal3dEmbed" parent="EnvironmentContainer" instance=ExtResource("6_03owx")]
-transform = Transform3D(-1.08431e-08, -0.18744, 0.307354, -8.16907e-09, 0.307354, 0.18744, -0.36, -1.32878e-09, -1.35108e-08, -2.89556, -1.58449, -2.94104)
+transform = Transform3D(-1.08431e-08, -0.18744, 0.307354, -8.16907e-09, 0.307354, 0.18744, -0.36, -1.32878e-09, -1.35108e-08, -2.90238, -1.58449, -2.94104)
+
+[node name="SteampunkPipes" parent="EnvironmentContainer" instance=ExtResource("7_wkp8b")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -2.81328, -1.46474, -6.12502)
+
+[node name="Repair" type="Area3D" parent="EnvironmentContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14855, -0.463363, -5.42846)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnvironmentContainer/Repair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.759419, -0.762173, -0.890523)
+shape = SubResource("CapsuleShape3D_wkp8b")
 
 [node name="SoundContainer" type="Node3D" parent="."]
 

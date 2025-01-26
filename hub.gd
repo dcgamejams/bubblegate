@@ -47,6 +47,16 @@ func interact(interact_event):
 			decrease_speed.emit()
 		"PowerUp":
 			increase_speed.emit()
+		"Repair":
+			_on_repair(4)
+			
+func _on_repair(health): 
+	if hull_health + health <= 100:
+		hull_health = hull_health + health
+		HullMonitor.bar.value = hull_health
+	else:
+		hull_health = 100
+		HullMonitor.bar.value = hull_health
 
 func _on_take_damage(damage): 
 	if hull_health - damage > 0:

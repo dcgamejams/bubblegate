@@ -31,6 +31,7 @@ Async="*res://network/scripts/async.gd"
 
 window/size/viewport_width=1728
 window/size/viewport_height=972
+window/size/mode=2
 window/stretch/mode="viewport"
 
 [editor_plugins]

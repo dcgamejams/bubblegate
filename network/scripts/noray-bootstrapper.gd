@@ -17,7 +17,8 @@ func _ready():
 	Noray.on_oid.connect(func(oid): oid_input.text = oid)
 	Noray.on_connect_nat.connect(_handle_connect_nat)
 	Noray.on_connect_relay.connect(_handle_connect_relay)
-
+	force_relay_check.button_pressed = true
+	
 func connect_to_noray():
 	# Connect to noray
 	var err = OK
@@ -102,7 +103,9 @@ func join():
 	else:
 		Noray.connect_nat(host_oid_input.text)
 
-	JoinMenu.join()
+	get_parent().get_parent().hide()
+
+	
 
 func _handle_connect_nat(address: String, port: int) -> Error:
 	var err = await _handle_connect(address, port)
