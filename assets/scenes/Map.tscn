@@ -360,7 +360,6 @@ debug_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Hazards"]
 position = Vector2(1539.43, 145.042)
-scale = Vector2(1, 1)
 navigation_polygon = SubResource("NavigationPolygon_trfwn")
 
 [node name="MapBackground" type="Node2D" parent="."]
